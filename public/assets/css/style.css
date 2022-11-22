@@ -1,0 +1,22 @@
+.icon-big {
+	width: 2em;
+	height: 2em;
+}
+
+/*.sidebar-link.active, .sidebar-link:focus {
+    text-decoration: none;
+    color: #fff !important;
+    background: #11C26D;
+}
+
+.sidebar-menu .sidebar-link.active {
+    background: #11C26D;
+}*/
+
+.sidebar-link{
+	font-weight: 600;
+}
+
+.select2--large.select2-selection {
+    font-size: 10px;
+}
