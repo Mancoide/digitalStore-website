@@ -5,7 +5,7 @@
 				<div class="card p-0 m-0">
 					<div class="card-header p-3">
 						<div class="d-flex justify-content-between">
-							<!-- <h4 class="card-heading">{{ __('resources.titles.users') }}</h4> -->
+							<h4 class="card-heading">Usuarios</h4>
 							<!-- <a class="btn btn-outline-success btn-sm" href="{{ url('users/create') }}"><i class="fas fa-plus"></i> {{ __('resources.buttons.add') }}</a> -->
 						</div>
 					</div>
@@ -30,7 +30,10 @@
 									<td>{{ user.username }}</td>
 									<td>{{ user.email }}</td>
 									<td class="text-right">
-										{{ user.status }}
+										
+										<span class="badge bg-'{{ constantsBadges[user.status]  }}' ">
+											{{ constants[user.status] }}
+										</span>
 									</td>
 									<td></td>
 								</tr>			
@@ -48,7 +51,9 @@
 
 	export default {
 		props: {
-			users: Object
+			users: Object,
+			constants: Object,
+			constantsBadges: Object
 		}
 	}
 </script>

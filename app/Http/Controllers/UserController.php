@@ -13,8 +13,10 @@ class UserController extends Controller
     public function index()
     {
     	$users = User::orderBy('id', 'DESC')->paginate(30);
+        $constants = config('constants.status');
+        $constantsBadges = config('constants.status-badge');
 
-    	return Inertia::render('Users/Index', compact('users'));
+    	return Inertia::render('Users/Index', compact('users', 'constants', 'constantsBadges'));
     }
 
     public function create()
