@@ -16,16 +16,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function(){
-	Route::get('/', 'HomeController@index')->name('home.index');
-	Route::get('users', 'UserController@index')->name('users.index');
-	Route::get('users/create', 'UserController@create')->name('users.create');
-	Route::post('users', 'UserController@store')->name('users.store');
+	Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+	Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+	// Route::get('users/create', 'UserController@create')->name('users.create');
+	// Route::post('users', 'UserController@store')->name('users.store');
 
-	Route::get('roles', 'RoleController@index')->name('roles.index');
-	Route::get('roles/create', 'RoleController@create')->name('roles.create');
-	Route::post('roles', 'RoleController@store')->name('roles.store');
-	Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
-	Route::put('roles/{role}', 'RoleController@update')->name('roles.update');
+	// Route::get('roles', 'RoleController@index')->name('roles.index');
+	// Route::get('roles/create', 'RoleController@create')->name('roles.create');
+	// Route::post('roles', 'RoleController@store')->name('roles.store');
+	// Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
+	// Route::put('roles/{role}', 'RoleController@update')->name('roles.update');
 });
 
 Route::middleware(['guest'])->group(function () {

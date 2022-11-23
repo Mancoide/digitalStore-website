@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Orchid\Icons\IconFinder;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,8 +21,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(IconFinder $iconFinder) : void
+    public function boot() : void
     {
-        $iconFinder->registerIconDirectory('fa', public_path('assets/fontawesome/svgs/solid'));
+
     }
 }

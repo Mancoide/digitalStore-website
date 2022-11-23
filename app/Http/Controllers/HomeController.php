@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-
 class HomeController extends Controller
 {
     // public function __construct()
@@ -14,7 +13,7 @@ class HomeController extends Controller
     
     public function index()
     {
-    	return view('pages.home');
-        // return Inertia::render('Pages/Home');
+    	// return view('pages.home');
+        return Inertia::render('Home');
     }
 }

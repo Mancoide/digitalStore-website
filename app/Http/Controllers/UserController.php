@@ -6,6 +6,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
@@ -13,7 +14,7 @@ class UserController extends Controller
     {
     	$users = User::orderBy('id', 'DESC')->paginate(30);
 
-    	return view('pages.users.index', compact('users'));
+    	return Inertia::render('Users/Index', compact('users'));
     }
 
     public function create()
