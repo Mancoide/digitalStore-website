@@ -19,13 +19,13 @@
                 <ul id="configDropdown" class="sidebar-menu list-unstyled collapse">
     
                     <li class="sidebar-list-item">
-                        <NavLink href="users" :active="$page.component === 'Users/Index'">
+                        <NavLink href="/users" :active="$page.component === 'Users/Index'">
                             Usuarios
                         </NavLink>
                     </li>
                     
                     <li class="sidebar-list-item">
-                        <NavLink href="roles" :active="$page.component === 'Roles/Index'">
+                        <NavLink href="/roles" :active="$page.component === 'Roles/Index'">
                             Roles
                         </NavLink>
                     </li>

@@ -6,39 +6,63 @@ use App\Http\Requests\CreateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class UserController extends Controller
 {
     public function index()
     {
-    	$users = User::orderBy('id', 'DESC')->paginate(30);
-        $constants = config('constants.status');
-        $constantsBadges = config('constants.status-badge');
+    	$users = User::with('status')->orderBy('id', 'DESC')->paginate(30);
 
-    	return Inertia::render('Users/Index', compact('users', 'constants', 'constantsBadges'));
+    	return Inertia::render('Users/Index', compact('users'));
     }
 
     public function create()
     {
-        $roles = $this->getRoles()->pluck('display_name', 'id');
+        $roles = $this->getRoles();
 
-    	return view('pages.users.create', compact('roles'));
+    	return Inertia::render('Users/Create', compact('roles'));
     }
 
     public function store(CreateUserRequest $request)
     {
-    	User::create([
+    	$user = User::create([
             'document_number'   => $request->document_number,
-    		'name'              => $request->name,
-            'last_name'         => $request->last_name,
-            'fullname'          => $request->name. ' ' . $request->last_name,
+            'fullname'          => $request->fullname,
             'username'          => $request->username,
             'email'             => $request->email,
             'password'          => $request->password,
+            'status_id'         => 1
     	]);
 
-        return redirect('users');
+        $user->attachRole($request->rol_id);
+
+        return Redirect::route('users.index');
+    }
+
+    public function edit(User $user)
+    {
+        $roles = $this->getRoles();
+        $user->load(['roles']);
+
+        return Inertia::render('Users/Edit', compact('roles', 'user'));
+    }
+
+    public function update(User $user, CreateUserRequest $request)
+    {
+        $user->update([
+            'document_number'   => $request->document_number,
+            'fullname'          => $request->fullname,
+            'username'          => $request->username,
+            'email'             => $request->email,
+        ]);
+
+        if($request->password) $user->update(['password' => $request->password]);
+
+        $user->syncRoles([$request->rol_id]);
+
+        return Redirect::route('users.index');
     }
 
     private function getRoles()

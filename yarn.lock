@@ -499,11 +499,6 @@ es-module-lexer@^0.9.0:
   resolved "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-0.9.3.tgz"
   integrity sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==
 
-esbuild-linux-64@0.15.15:
-  version "0.15.15"
-  resolved "https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.15.15.tgz"
-  integrity sha512-217KPmWMirkf8liO+fj2qrPwbIbhNTGNVtvqI1TnOWJgcMjUWvd677Gq3fTzXEjilkx2yWypVnTswM2KbXgoAg==
-
 esbuild-windows-64@0.15.15:
   version "0.15.15"
   resolved "https://registry.npmjs.org/esbuild-windows-64/-/esbuild-windows-64-0.15.15.tgz"
@@ -969,7 +964,7 @@ vue-loader@^17.0.1:
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
-vue@^3.0.0, vue@^3.2.20, vue@^3.2.25, vue@^3.2.36, vue@3.2.45:
+vue@^3.0.0, vue@^3.2.0, vue@^3.2.20, vue@^3.2.25, vue@^3.2.36, vue@3.2.45:
   version "3.2.45"
   resolved "https://registry.npmjs.org/vue/-/vue-3.2.45.tgz"
   integrity sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA==
@@ -979,6 +974,11 @@ vue@^3.0.0, vue@^3.2.20, vue@^3.2.25, vue@^3.2.36, vue@3.2.45:
     "@vue/runtime-dom" "3.2.45"
     "@vue/server-renderer" "3.2.45"
     "@vue/shared" "3.2.45"
+
+vuetify@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/vuetify/-/vuetify-3.0.1.tgz"
+  integrity sha512-Vl4wYB4mCm6GFK6Q9KZDK+HM3YKI7md7BoUPwbgqZj4bkofjQ/8NVSRQQpTcwk0YoQrgw6qj0QaOtP5zitkS1Q==
 
 watchpack@^2.4.0:
   version "2.4.0"

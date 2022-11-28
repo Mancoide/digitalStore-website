@@ -6,40 +6,64 @@
 					<div class="card-header p-3">
 						<div class="d-flex justify-content-between">
 							<h4 class="card-heading">Usuarios</h4>
-							<!-- <a class="btn btn-outline-success btn-sm" href="{{ url('users/create') }}"><i class="fas fa-plus"></i> {{ __('resources.buttons.add') }}</a> -->
+							<Link href="users/create" class="btn btn-outline-success btn-sm">
+								<i class="fas fa-plus"></i> Agregar
+							</Link>
 						</div>
 					</div>
 					<div class="card-body p-0">
-						<table class="table table-striped card-text">
+						<v-table class="table table-striped card-text">
 							<thead>
 								<tr>
+									<td></td>
 									<td>#</td>
 									<td>Documento</td>
 									<td>Nombre</td>
 									<td>Usuario</td>
 									<td>E-mail</td>
 									<td>Estado</td>
-									<td></td>
 								</tr>
 							</thead>
-							<tbody v-for="user in users.data" :key="user.id">
-								<tr>
+							<tbody class="align-items-center">
+								<tr v-for="user in users.data" :key="user.id" >
+									<td class="text-left">
+										<div class="btn-group dropend">
+											<button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+												<i class="fas fa-ellipsis-v"></i>
+											</button>
+											<ul class="dropdown-menu align-items-center">
+											  	<li>
+													<Link
+														class="dropdown-item align-self-center"
+														@click="editRedirect(user.id)"
+													>
+														<v-icon icon="fas fa-edit"></v-icon> 
+														Editar
+													</Link>
+												</li>
+											  	<!-- <li>
+													<a class="dropdown-item" href="#">
+														<v-icon icon="fas fa-eye"></v-icon> 
+														Ver
+													</a>
+												</li> -->
+											</ul>
+										</div>
+									</td>
 									<td>{{ user.id }}</td>
 									<td>{{ user.document_number }}</td>
 									<td>{{ user.fullname }}</td>
 									<td>{{ user.username }}</td>
 									<td>{{ user.email }}</td>
-									<td class="text-right">
-										
-										<span class="badge bg-'{{ constantsBadges[user.status]  }}' ">
-											{{ constants[user.status] }}
+									<td class="text-center text-white">
+										<span :class="[user.status.badge]">
+											{{ user.status.name }}
 										</span>
 									</td>
-									<td></td>
 								</tr>			
 							</tbody>
-						</table>
-						<!-- {{ $users->links() }} -->
+						</v-table>
+						<pagination :links="users.links" />
 					</div>
 				</div>
 			</div>
@@ -48,12 +72,22 @@
 </template>
 
 <script>
+	import Pagination from '../shared/Paginator.vue'
+	import { Link } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
 
 	export default {
+		components: {
+			Pagination,
+			Link
+		},
 		props: {
-			users: Object,
-			constants: Object,
-			constantsBadges: Object
+			users: Object
+		}, 
+		methods: {
+			editRedirect(id){
+				Inertia.visit('users/' + id + '/edit');
+			}
 		}
 	}
 </script>

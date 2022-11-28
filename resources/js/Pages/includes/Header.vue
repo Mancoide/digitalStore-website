@@ -7,7 +7,7 @@
             <ul class="ms-auto d-flex align-items-center list-unstyled mb-0">
                 <li class="nav-item dropdown ms-auto">
                     <a class="nav-link pe-0 text-muted" id="userInfo" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <CIcon class="icon-big svg-icon svg-icon me-3 avatar p-1" :icon="icon.cilUser" size="xl"/>
+                        <CIcon class="icon-big svg-icon svg-icon me-3 avatar p-1" :icon="cilUser" size="xl"/>
                         <!-- <span class="sidebar-link-title">{{ auth()->user()->fullname }} </span> -->
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated" aria-labelledby="userInfo">
@@ -28,7 +28,7 @@
 
 <script>
 import { CIcon } from '@coreui/icons-vue';
-import * as icon from '@coreui/icons';
+import { cilUser } from '@coreui/icons';
 
 export default {
     components:{
@@ -36,7 +36,7 @@ export default {
     },
     setup() {
         return {
-        icon,
+            cilUser,
         }
     }
 }

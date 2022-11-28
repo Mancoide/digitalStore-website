@@ -18,13 +18,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'document_number',
-        'name',
-        'last_name',
         'fullname',
         'username',
-        'status',
         'email',
         'password',
+        'status_id'
     ];
 
     /**
@@ -40,5 +38,15 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * Get the status that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 }
