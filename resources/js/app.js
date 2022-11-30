@@ -4,22 +4,18 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import DefaultLayout from '@/Pages/includes/Layout.vue' 
 import { InertiaProgress } from '@inertiajs/progress'
 // Vuetify
-import 'vuetify/styles'
+import 'vuetify/styles';
+import '@mdi/font/css/materialdesignicons.css';
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
 const vuetify = createVuetify({
   	components,
   	directives,
-  	icons: {
-		defaultSet: 'mdi',
-		aliases,
-		sets: {
-			mdi,
-		}
-  	},
+	icons: {
+		defaultSet: 'mdi', // This is already the default value - only for display purposes
+	},
 })
 
 InertiaProgress.init();

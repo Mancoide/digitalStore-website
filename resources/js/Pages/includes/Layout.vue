@@ -1,11 +1,13 @@
 <template>
-    <Header />
-    <div class="d-flex align-items-stretch">
+    <v-layout>
+        <Header />
         <Menu />
-        <div class="page-holder bg-gray-100">
-            <slot />
-        </div>
-    </div>
+        <v-main>
+            <!-- <v-app-bar color="grey-lighten-1"> -->
+                <slot />
+            <!-- </v-app-bar> -->
+        </v-main>
+    </v-layout>
 </template>
 
 <script>

@@ -1,59 +1,45 @@
 <template>
-    <div class="sidebar py-3" id="sidebar">
-        <!-- <h6 class="sidebar-heading">Main</h6> -->
-        <ul class="list-unstyled">
-            <li class="sidebar-list-item">
-                <!-- <x-orchid-icon path="fa.home" class="icon-big svg-icon svg-icon me-3" /> -->
-                <NavLink href="/" :active="$page.component === 'Home'">
-                    <CIcon class="icon-big svg-icon svg-icon me-3" :icon="cilHouse" size="xl"/>
-                    <span class="sidebar-link-title"> Tablero</span>
-                </NavLink>
-            </li>
-            <li class="sidebar-list-item">
-                <NavLink href="#" data-bs-target="#configDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse"
-                    :active="$page.component.startsWith('Users') || $page.component.startsWith('Roles')"
-                >
-                    <CIcon :icon="cilAppsSettings" size="xl" class="icon-big svg-icon svg-icon me-3"/>
-                    <span class="sidebar-link-title">Configuración </span>
-                </NavLink>
-                <ul id="configDropdown" class="sidebar-menu list-unstyled collapse">
-    
-                    <li class="sidebar-list-item">
-                        <NavLink href="/users" :active="$page.component === 'Users/Index'">
-                            Usuarios
-                        </NavLink>
-                    </li>
-                    
-                    <li class="sidebar-list-item">
-                        <NavLink href="/roles" :active="$page.component === 'Roles/Index'">
-                            Roles
-                        </NavLink>
-                    </li>
-                </ul>
-              </li>
-        </ul>
-    </div>
+    <v-navigation-drawer 
+        color="grey-lighten-5"
+        permanent
+    >
+        <v-list nav>
+            <Link href="/" as="button" class="w-100 text-left">
+                <v-list-item prepend-icon="mdi-view-dashboard" title="Tablero" value="/" />
+            </Link>
+
+            <v-list-group value="Configuración">
+                <template v-slot:activator="{ props }">
+                  <v-list-item
+                    v-bind="props"
+                    prepend-icon="mdi-account-settings"
+                    title="Configuración"
+                  ></v-list-item>
+                </template>
+      
+                <Link href="/users" as="button" class="w-100 text-left">
+                    <v-list-item title="Usuarios" value="/users" />
+                </Link>
+                <Link href="/users" as="button" class="w-100 text-left">
+                    <v-list-item title="Roles" value="/roles" />
+                </Link>
+            </v-list-group>
+        </v-list>
+    </v-navigation-drawer>
 </template>
 
 <script>
-import NavLink  from '../shared/NavLink.vue'
-import { CIcon } from '@coreui/icons-vue';
-import {
-    cilHouse,
-    cilAppsSettings
-} from '@coreui/icons';
+import { Link } from '@inertiajs/inertia-vue3';
 
 export default {
     components:{
-        CIcon,
-        NavLink
+        Link
     },
-    setup() {
-        return {
-            cilHouse,
-            cilAppsSettings
-        }
-    }
+    watch: {
+      group () {
+        this.drawer = false
+      },
+    },
 }
 
 </script>
