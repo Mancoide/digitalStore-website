@@ -1,0 +1,4 @@
+.v-list-item--active, .v-list-item--active div, .v-list-item--active span {
+    background-color: #F73903 !important;
+    color: white;
+}

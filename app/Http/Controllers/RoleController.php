@@ -6,6 +6,8 @@ use App\Http\Requests\CreateRoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class RoleController extends Controller
 {
@@ -19,13 +21,13 @@ class RoleController extends Controller
         }
 
         $roles = $roles->paginate(20);
-        return view('pages.roles.index', compact('roles'));
+        return Inertia::render('Roles/Index', compact('roles'));
     }
 
     public function create()
     {
         $permissions = $this->getPermissions();
-        return view('pages.roles.create', compact('permissions'));
+        return Inertia::render('Roles/Create', compact('permissions'));
     }
 
     public function store(CreateRoleRequest $request)
@@ -36,33 +38,34 @@ class RoleController extends Controller
             'name'          => str_replace(' ', '-', $request->name)
         ]);
 
-        $role->attachPermissions($request->permission_ids);
+        $role->attachPermissions($request->permissions);
 
-        return redirect('roles');
+        return Redirect::route('roles.index');
     }
 
-    public function edit(Role $role)
+    public function edit(Role $rol)
     {
         $permissions = $this->getPermissions();
+        $rol->load(['permissions']);
 
-        return view('pages.roles.edit', compact('role', 'permissions'));
+        return Inertia::render('Roles/Edit', compact('permissions', 'rol'));
     }
 
     public function update(Role $role, CreateRoleRequest $request)
     {
         $role->update([
-            'name' => str_slug($request->display_name),
-            'display_name' => $request->display_name,
+            'name' => str_replace(' ', '-', $request->name),
+            'display_name' => $request->name,
             'description' => $request->description
         ]);
 
-        $role->syncPermissions(request()->permission_ids);
+        $role->syncPermissions(request()->permissions);
         
-        return redirect('roles');
+        return Redirect::route('roles.index');
     }
 
     private function getPermissions()
     {
-        return Permission::get()->sortBy('id')->groupBy('description')->toArray();
+        return Permission::get()->sortBy('id')->groupBy('description');
     }
 }

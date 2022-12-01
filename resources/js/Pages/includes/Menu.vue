@@ -1,6 +1,5 @@
 <template>
     <v-navigation-drawer 
-        color="grey-lighten-5"
         permanent
     >
         <v-list nav>
@@ -8,20 +7,22 @@
                 <v-list-item prepend-icon="mdi-view-dashboard" title="Tablero" value="/" />
             </Link>
 
+            <v-divider></v-divider>
+
             <v-list-group value="Configuración">
                 <template v-slot:activator="{ props }">
                   <v-list-item
                     v-bind="props"
-                    prepend-icon="mdi-account-settings"
+                    prepend-icon="mdi-cogs"
                     title="Configuración"
                   ></v-list-item>
                 </template>
-      
+                <v-divider></v-divider>
                 <Link href="/users" as="button" class="w-100 text-left">
-                    <v-list-item title="Usuarios" value="/users" />
+                    <v-list-item prepend-icon="mdi-account" title="Usuarios" value="/users" />
                 </Link>
-                <Link href="/users" as="button" class="w-100 text-left">
-                    <v-list-item title="Roles" value="/roles" />
+                <Link href="/roles" as="button" class="w-100 text-left">
+                    <v-list-item prepend-icon="mdi-script-text-outline" title="Roles" value="/roles" />
                 </Link>
             </v-list-group>
         </v-list>

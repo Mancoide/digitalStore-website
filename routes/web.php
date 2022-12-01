@@ -23,11 +23,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('users/{user}/edit', [\App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
 	Route::put('users/{user}', [\App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 
-	// Route::get('roles', 'RoleController@index')->name('roles.index');
-	// Route::get('roles/create', 'RoleController@create')->name('roles.create');
-	// Route::post('roles', 'RoleController@store')->name('roles.store');
-	// Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
-	// Route::put('roles/{role}', 'RoleController@update')->name('roles.update');
+	Route::get('roles', 'RoleController@index')->name('roles.index');
+	Route::get('roles/create', 'RoleController@create')->name('roles.create');
+	Route::post('roles', 'RoleController@store')->name('roles.store');
+	Route::get('roles/{rol}/edit', 'RoleController@edit')->name('roles.edit');
+	Route::put('roles/{rol}', 'RoleController@update')->name('roles.update');
 });
 
 Route::middleware(['guest'])->group(function () {

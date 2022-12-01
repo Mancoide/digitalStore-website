@@ -1,10 +1,9 @@
 <template>
 	<v-container>
-		
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
 			<v-row justify="space-between pa-4 mb-2">
-				<h5>Usuarios</h5>
-				<Link href="users/create" as="button">
+				<h5>Roles</h5>
+				<Link href="roles/create" as="button">
 					<v-btn
 						variant="outlined"
 						color="success"
@@ -21,32 +20,20 @@
 							<tr>
 								<td></td>
 								<td>#</td>
-								<td>Documento</td>
 								<td>Nombre</td>
-								<td>Usuario</td>
-								<td>E-mail</td>
-								<td>Estado</td>
 							</tr>
 						</thead>
 						<tbody class="align-items-center">
-							<tr v-for="user in users.data" :key="user.id" >
+							<tr v-for="rol in roles.data" :key="rol.id" >
 								<td class="text-left">
-									<TableActionsVue :items="items" :idRegister="user.id" />
+									<TableActionsVue :items="items" :idRegister="rol.id" />
 								</td>
-								<td>{{ user.id }}</td>
-								<td>{{ user.document_number }}</td>
-								<td>{{ user.fullname }}</td>
-								<td>{{ user.username }}</td>
-								<td>{{ user.email }}</td>
-								<td class="text-center text-white">
-									<span :class="[user.status.badge]">
-										{{ user.status.name }}
-									</span>
-								</td>
+								<td>{{ rol.id }}</td>
+								<td>{{ rol.display_name }}</td>
 							</tr>			
 						</tbody>
 					</v-table>
-					<pagination :links="users.links" />
+					<pagination :links="roles.links" />
 				</v-card-text>
 			</v-card>
 		</v-responsive>
@@ -56,13 +43,12 @@
 <script>
 	import Pagination from '../shared/Paginator.vue'
 	import { Link } from '@inertiajs/inertia-vue3';
-	import { Inertia } from '@inertiajs/inertia';
 	import TableActionsVue from '../shared/TableActions.vue';
 
 	export default {
 		data() {
 			let items = [
-				{name: 'Editar', icon:'mdi-pencil-outline', navigateTo:"users/:id/edit"}
+				{name: 'Editar', icon:'mdi-pencil-outline', navigateTo:"roles/:id/edit"}
 			];
 
 			return {
@@ -75,7 +61,7 @@
 			Link
 		},
 		props: {
-			users: Object
+			roles: Object
 		}
 	}
 </script>

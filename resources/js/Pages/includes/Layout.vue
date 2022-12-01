@@ -1,12 +1,14 @@
 <template>
     <v-layout>
-        <Header />
-        <Menu />
-        <v-main>
-            <!-- <v-app-bar color="grey-lighten-1"> -->
-                <slot />
-            <!-- </v-app-bar> -->
-        </v-main>
+        <v-app>
+            <Header />
+            <Menu />
+            <v-main>
+                <v-content>
+                    <slot />
+                </v-content>
+            </v-main>
+        </v-app>
     </v-layout>
 </template>
 
