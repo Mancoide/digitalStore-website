@@ -1,8 +1,8 @@
 <template>
     <v-layout>
         <v-app>
-            <Header />
             <Menu />
+            <Header />
             <v-main>
                 <v-content>
                     <slot />
@@ -20,6 +20,6 @@
         components: {
             Header,
             Menu
-        },
+        }
     }
 </script>

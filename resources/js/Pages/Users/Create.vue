@@ -55,6 +55,7 @@
             const form = useForm({
                 document_number: null,
                 email: null,
+                phone:null,
                 fullname: null,
                 username: null,
                 password: null,

@@ -1,4 +1,13 @@
-.v-list-item--active, .v-list-item--active div, .v-list-item--active span {
-    background-color: #F73903 !important;
+.item-menu-group .v-list-item--active, .item-menu-group .v-list-item--active div, .item-menu-group .v-list-item--active span {
+    background-color: #03B1CA !important;
     color: white;
+}
+
+.v-list-group__items .v-list-item {
+    padding: 10px !important;
+}
+
+.menu-title-group {
+    color: #03B1CA;
+    /* color: #F73903; */
 }

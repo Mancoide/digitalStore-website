@@ -31,6 +31,7 @@ class UserController extends Controller
             'document_number'   => $request->document_number,
             'fullname'          => $request->fullname,
             'username'          => $request->username,
+            'phone'             => $request->phone,
             'email'             => $request->email,
             'password'          => $request->password,
             'status_id'         => 1
@@ -56,6 +57,7 @@ class UserController extends Controller
             'fullname'          => $request->fullname,
             'username'          => $request->username,
             'email'             => $request->email,
+            'phone'             => $request->phone,
         ]);
 
         if($request->password) $user->update(['password' => $request->password]);

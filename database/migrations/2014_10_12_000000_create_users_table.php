@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->integer('document_number');
             $table->string('fullname');
             $table->string('username');
+            $table->string('phone');
             $table->string('email');
             $table->string('password');
             $table->rememberToken();

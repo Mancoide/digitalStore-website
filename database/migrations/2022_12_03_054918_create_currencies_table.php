@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
+            $table->string('symbol', 3);
             $table->string('name');
-            $table->string('badge');
-            $table->string('data_model');
-        });
-
-        Schema::table('users', function (Blueprint $table) {
+            $table->string('code');
             $table->foreignId('status_id')->constrained('statuses');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('currencies');
     }
 };

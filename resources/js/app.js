@@ -10,6 +10,7 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
+
 const vuetify = createVuetify({
   	components,
   	directives,
@@ -17,8 +18,8 @@ const vuetify = createVuetify({
 		defaultSet: 'mdi', // This is already the default value - only for display purposes
 	},
 	theme: {
-		// defaultTheme: 'dark'
-		defaultTheme: 'light'
+		defaultTheme: 'dark'
+		// defaultTheme: 'light'
 	}
 })
 

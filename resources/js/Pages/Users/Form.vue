@@ -39,6 +39,17 @@
             </div> 
             <div class="form-group col-md-4">
                 <v-text-field
+                    :error-messages="formData.errors.phone"
+                    v-model="formData.phone"
+                    color="primary"
+                    type="phone"
+                    label="Contraseña"
+                />
+            </div> 
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <v-text-field
                     :error-messages="formData.errors.password"
                     v-model="formData.password"
                     color="primary"
@@ -46,9 +57,7 @@
                     label="Contraseña"
                 />
             </div> 
-        </div>
-        <div class="row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-8">
                 <v-select
                     :error-messages="formData.errors.rol_id"
                     color="primary"

@@ -48,22 +48,22 @@
             Link
         },
         props: {
-            rol: Object,
+            role: Object,
             permissions: Object
         },
         setup (props) {
             let actualPermissions = [];
-            if(props.rol && props.rol.permissions.length > 0) 
+            if(props.role && props.role.permissions.length > 0) 
             {
-                props.rol.permissions.map((permission) => {
+                props.role.permissions.map((permission) => {
                     actualPermissions.push(permission.id);
                 })
             }
 
             const form = useForm({
                 permissions: actualPermissions,
-                name: props.rol.display_name ?? '',
-                description: props.rol.description ?? ''
+                name: props.role.display_name ?? '',
+                description: props.role.description ?? ''
             });
             
             return { form }

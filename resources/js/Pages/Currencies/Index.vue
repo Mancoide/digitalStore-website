@@ -2,14 +2,14 @@
 	<v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
 			<v-row justify="space-between pa-4 mb-2">
-				<h5>Roles</h5>
-				<Link href="roles/create" as="button">
+				<h5>Monedas</h5>
+				<Link href="currencies/create" as="button">
 					<v-btn
 						variant="outlined"
 						color="success"
 						prepend-icon="mdi-plus"
 					>
-						Nuevo Rol
+						Nueva Moneda
 					</v-btn>
 				</Link>
 			</v-row>
@@ -20,20 +20,30 @@
 							<tr>
 								<td></td>
 								<td>#</td>
+								<td>Símbolo</td>
 								<td>Nombre</td>
+								<td>Codigo</td>
+								<td>Estado</td>
 							</tr>
 						</thead>
 						<tbody class="align-items-center">
-							<tr v-for="rol in roles.data" :key="rol.id" >
+							<tr v-for="currency in currencies.data" :key="currency.id" >
 								<td class="text-left">
-									<TableActionsVue :items="items" :idRegister="rol.id" />
+									<TableActionsVue :items="items" :idRegister="currency.id" />
 								</td>
-								<td>{{ rol.id }}</td>
-								<td>{{ rol.display_name }}</td>
+								<td>{{ currency.id }}</td>
+								<td>{{ currency.symbol }}</td>
+								<td>{{ currency.name }}</td>
+								<td>{{ currency.code }}</td>
+								<td class="text-center text-white">
+									<span :class="[currency.status.badge]">
+										{{ currency.status.name }}
+									</span>
+								</td>
 							</tr>			
 						</tbody>
 					</v-table>
-					<pagination :links="roles.links" />
+					<pagination :links="currencies.links" />
 				</v-card-text>
 			</v-card>
 		</v-responsive>
@@ -48,7 +58,7 @@
 	export default {
 		data() {
 			let items = [
-				{name: 'Editar', icon:'mdi-pencil-outline', navigateTo:"roles/:id/edit"}
+				{name: 'Editar', icon:'mdi-pencil-outline', navigateTo:"currencies/:id/edit"}
 			];
 
 			return {
@@ -61,7 +71,7 @@
 			Link
 		},
 		props: {
-			roles: Object
+			currencies: Object
 		}
 	}
 </script>

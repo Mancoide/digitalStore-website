@@ -32,6 +32,7 @@ class CreateUserRequest extends FormRequest
                 Rule::unique('users')->ignore(request()->user ? request()->user->id : 0),
             ],
             'email'           => 'required|email',
+            'phone'           => 'required',
             // 'password'        => 'required',
             'rol_id'          => 'required'
         ];

@@ -1,6 +1,6 @@
 <template>
     <v-app-bar>
-        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon variant="text" @click.stop="(menuDrawer = !menuDrawer)"></v-app-bar-nav-icon>
 
         <v-spacer></v-spacer>
 
@@ -27,20 +27,12 @@ import { CIcon } from '@coreui/icons-vue';
 import { cilUser } from '@coreui/icons';
 
 export default {
-    data(){
-        return {
-            drawer: false
-        }
-    },
     components:{
         CIcon,
     },
-    props: {
-        drawer: Boolean
-    },
     setup() {
         return {
-            cilUser,
+            cilUser
         }
     }
 }

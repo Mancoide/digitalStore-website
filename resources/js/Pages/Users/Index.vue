@@ -10,7 +10,7 @@
 						color="success"
 						prepend-icon="mdi-plus"
 					>
-						Agregar
+						Nuevo Usuario
 					</v-btn>
 				</Link>
 			</v-row>
@@ -24,6 +24,7 @@
 								<td>Documento</td>
 								<td>Nombre</td>
 								<td>Usuario</td>
+								<td>Telefono</td>
 								<td>E-mail</td>
 								<td>Estado</td>
 							</tr>
@@ -37,11 +38,13 @@
 								<td>{{ user.document_number }}</td>
 								<td>{{ user.fullname }}</td>
 								<td>{{ user.username }}</td>
+								<td>{{ user.phone }}</td>
 								<td>{{ user.email }}</td>
 								<td class="text-center text-white">
-									<span :class="[user.status.badge]">
-										{{ user.status.name }}
-									</span>
+									<v-badge 
+										:color="user.status.badge"
+										:content="user.status.name"
+									/>
 								</td>
 							</tr>			
 						</tbody>

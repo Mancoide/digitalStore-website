@@ -43,12 +43,12 @@ class RoleController extends Controller
         return Redirect::route('roles.index');
     }
 
-    public function edit(Role $rol)
+    public function edit(Role $role)
     {
         $permissions = $this->getPermissions();
-        $rol->load(['permissions']);
+        $role->load(['permissions']);
 
-        return Inertia::render('Roles/Edit', compact('permissions', 'rol'));
+        return Inertia::render('Roles/Edit', compact('permissions', 'role'));
     }
 
     public function update(Role $role, CreateRoleRequest $request)

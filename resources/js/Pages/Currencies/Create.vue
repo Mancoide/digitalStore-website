@@ -1,12 +1,12 @@
 <template>
-    <v-container>
+	<v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
             <v-row justify="space-between pa-4 mb-2">
-				<h5>Editar Usuario</h5>
+				<h5>Nueva Moneda</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.put('/users/'+user.id)">
-                    <FormVue :roles="roles" :formData="form" />
+                <form @submit.prevent="form.post('/currencies')">
+                    <FormVue :formData="form" />
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
@@ -20,7 +20,7 @@
                                 </v-btn>
                             </div>
                             <div class="col-6">
-                                <Link href="/users" as="button" class="w-100">
+                                <Link href="/currencies" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
                                         color="danger"
@@ -29,7 +29,6 @@
                                             Cancelar
                                     </v-btn>
                                 </Link>
-                                
                             </div>
                         </div>
                     </div>
@@ -48,23 +47,15 @@
             FormVue,
             Link
         },
-        props: {
-            roles: Object,
-            user: Object
-        },
-        setup (props) {
+        setup () {
             const form = useForm({
-                document_number: props.user?.document_number ?? null,
-                email: props.user?.email ?? null,
-                fullname: props.user?.fullname ?? null,
-                username: props.user?.username ?? null,
-                phone: props.user?.phone ?? null,
-                password: null,
-                rol_id: props.user?.rol_id ?? null,
+                symbol: null,
+                code: null,
+                name: null,
             });
             
             return { form }
-        }
+        },
     }
 
 </script>
