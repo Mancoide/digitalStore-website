@@ -48,7 +48,7 @@
                     </v-list-item>
                 </template>
                
-                <Link href="/roles" as="button" class="w-100 text-left">
+                <Link href="/roles" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-account-group" title="Roles de usuarios" value="/roles" />
                 </Link>
                 <Link href="/users" as="button" class="w-100 text-left item-menu-group">
@@ -72,6 +72,10 @@
                 </template>
                 <Link href="/currencies" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-currency-usd" title="Monedas" value="/currencies" />
+                </Link>
+
+                <Link href="/categories" as="button" class="w-100 text-left item-menu-group">
+                    <v-list-item prepend-icon="mdi-shape" title="Categorias" value="/categories" />
                 </Link>
                
             </v-list-group>

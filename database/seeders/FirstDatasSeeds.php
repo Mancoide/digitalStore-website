@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FirstDatasSeeds extends Seeder
 {
@@ -14,37 +16,44 @@ class FirstDatasSeeds extends Seeder
      */
     public function run()
     {
-        $statusAdmin = \App\Models\Status::create(
+       
+        $arrayStatuses = [
             [
-                'name' => 'Activo',
+                'name' => 'Activo', // 1
                 'badge' => 'primary',
                 'data_model' => 'App\\Models\\User'
             ],
-        );
-
-       \App\Models\Status::create(
             [
-                'name' => 'Inactivo',
+                'name' => 'Inactivo', // 2
                 'badge' => 'danger',
                 'data_model' => 'App\\Models\\User'
             ],
-        );
-
-        \App\Models\Status::create(
             [
-                'name' => 'Activo',
+                'name' => 'Activo', // 3
                 'badge' => 'primary',
                 'data_model' => 'App\\Models\\Currency'
             ],
-        );
-
-        \App\Models\Status::create(
             [
-                'name' => 'Inactivo',
+                'name' => 'Inactivo', // 4
                 'badge' => 'danger',
                 'data_model' => 'App\\Models\\Currency'
             ],
-        );
+            [
+                'name' => 'Activo', // 5
+                'badge' => 'primary',
+                'data_model' => 'App\\Models\\Category'
+            ],
+            [
+                'name' => 'Inactivo', // 6
+                'badge' => 'danger',
+                'data_model' => 'App\\Models\\Category'
+            ],
+        ];
+
+        foreach($arrayStatuses as $statuses) 
+        {
+            Status::create($statuses);
+        }
 
         $userAdmin = \App\Models\User::create([
             'document_number'     => '0',
@@ -53,7 +62,7 @@ class FirstDatasSeeds extends Seeder
             'phone'               => '5959983456789',
             'email'               => 'admin@mail',
             'password'            => '12345',
-            'status_id'           => $statusAdmin->id
+            'status_id'           => 1
         ]);
 
         // Insert starter roles
