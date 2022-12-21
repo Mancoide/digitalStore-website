@@ -39,7 +39,10 @@ class UserController extends Controller
 
         $user->attachRole($request->rol_id);
 
-        return Redirect::route('users.index');
+        return Redirect::route('users.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     public function edit(User $user)
@@ -64,7 +67,10 @@ class UserController extends Controller
 
         $user->syncRoles([$request->rol_id]);
 
-        return Redirect::route('users.index');
+        return Redirect::route('users.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     private function getRoles()

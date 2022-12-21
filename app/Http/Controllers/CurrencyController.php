@@ -49,7 +49,10 @@ class CurrencyController extends Controller
             'status_id' => 3
         ]);
 
-        return Redirect::route('currencies.index');
+        return Redirect::route('currencies.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     /**
@@ -92,7 +95,10 @@ class CurrencyController extends Controller
             'status_id' => $request->status_id
         ]);
         
-        return Redirect::route('currencies.index');
+        return Redirect::route('currencies.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     /**

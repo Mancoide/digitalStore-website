@@ -40,7 +40,10 @@ class RoleController extends Controller
 
         $role->attachPermissions($request->permissions);
 
-        return Redirect::route('roles.index');
+        return Redirect::route('roles.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     public function edit(Role $role)
@@ -61,7 +64,10 @@ class RoleController extends Controller
 
         $role->syncPermissions(request()->permissions);
         
-        return Redirect::route('roles.index');
+        return Redirect::route('roles.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     private function getPermissions()

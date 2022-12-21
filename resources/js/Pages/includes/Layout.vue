@@ -5,6 +5,7 @@
             <Header />
             <v-main>
                 <v-content>
+                    <NotificationBoxVue />
                     <slot />
                 </v-content>
             </v-main>
@@ -15,11 +16,13 @@
 <script>
     import Header from './Header.vue';
     import Menu from './Menu.vue';
+    import NotificationBoxVue from '../shared/NotificationBox.vue';
 
     export default {
         components: {
             Header,
-            Menu
+            Menu,
+            NotificationBoxVue
         }
     }
 </script>

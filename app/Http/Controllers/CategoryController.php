@@ -48,7 +48,10 @@ class CategoryController extends Controller
             'status_id' => 5
         ]);
         
-        return Redirect::route('categories.index');
+        return Redirect::route('categories.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     /**
@@ -89,7 +92,10 @@ class CategoryController extends Controller
             'status_id' => $request->status_id
         ]);
 
-        return Redirect::route('categories.index');
+        return Redirect::route('categories.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     /**
