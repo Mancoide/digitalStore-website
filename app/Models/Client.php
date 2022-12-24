@@ -22,6 +22,7 @@ class Client  extends Authenticatable
         'email',
         'country',
         'city',
-        'status'
+        'status',
+        'user_id'
     ];
 }

@@ -31,7 +31,7 @@
                     <v-list-item prepend-icon="mdi-vector-intersection" title="Productos" value="/users" />
                 </Link>
                 <Link href="/clients" as="button" class="w-100 text-left item-menu-group">
-                    <v-list-item prepend-icon="mdi-vector-intersection" title="Clientes" value="/clients" />
+                    <v-list-item prepend-icon="mdi-account-multiple" title="Clientes" value="/clients" />
                 </Link>
 
             </v-list-group>

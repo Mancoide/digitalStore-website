@@ -12,7 +12,11 @@ class ClientController extends Controller
 {
     public function index()
     {
-    	$clients = Client::orderBy('id', 'DESC')->paginate(30);
+        if(auth()->user()->id == 1){
+            $clients = Client::orderBy('id', 'DESC')->paginate(30);
+        }else{
+            $clients = Client::orderBy('id', 'DESC')->where('user_id',auth()->user()->id)->paginate(30);
+        }
 
     	return Inertia::render('Clients/Index', compact('clients'));
     }
@@ -30,6 +34,7 @@ class ClientController extends Controller
             'email'             => $request->email,
             'country'           => $request->country,
             'city'              => $request->city,
+            'user_id'           => auth()->user()->id,
             'status_id'         => 1
     	]);
 

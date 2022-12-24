@@ -61,6 +61,27 @@ class PermissionsSeeder extends Seeder
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ],
+                [
+                    'name'         => 'clients.index',
+                    'display_name' => 'Ver Clientes',
+                    'description'  => 3,
+                    'created_at'   => date('Y-m-d H:i:s'),
+                    'updated_at'   => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'name'         => 'clients.create',
+                    'display_name' => 'Crear Clientes',
+                    'description'  => 3,
+                    'created_at'   => date('Y-m-d H:i:s'),
+                    'updated_at'   => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'name'         => 'clients.editar',
+                    'display_name' => 'Editar Clientes',
+                    'description'  => 3,
+                    'created_at'   => date('Y-m-d H:i:s'),
+                    'updated_at'   => date('Y-m-d H:i:s'),
+                ],
             ]);
 
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
