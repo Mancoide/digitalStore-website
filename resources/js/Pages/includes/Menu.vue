@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer 
+    <v-navigation-drawer
         permanent
     >
         <Link href="/" as="button" class="w-100 text-left item-menu-group">
@@ -30,7 +30,10 @@
                 <Link href="/users" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-vector-intersection" title="Productos" value="/users" />
                 </Link>
-               
+                <Link href="/clients" as="button" class="w-100 text-left item-menu-group">
+                    <v-list-item prepend-icon="mdi-vector-intersection" title="Clientes" value="/clients" />
+                </Link>
+
             </v-list-group>
 
             <v-divider></v-divider>
@@ -47,7 +50,7 @@
                         </template>
                     </v-list-item>
                 </template>
-               
+
                 <Link href="/roles" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-account-group" title="Roles de usuarios" value="/roles" />
                 </Link>
@@ -77,7 +80,7 @@
                 <Link href="/categories" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-shape" title="Categorias" value="/categories" />
                 </Link>
-               
+
             </v-list-group>
         </v-list>
     </v-navigation-drawer>

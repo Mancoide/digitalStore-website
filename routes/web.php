@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function(){
 	Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 	Route::resource('users', \App\Http\Controllers\UserController::class);
+	Route::resource('clients', \App\Http\Controllers\ClientController::class);
 	Route::resource('roles', \App\Http\Controllers\RoleController::class);
 
 	Route::resource('currencies', \App\Http\Controllers\CurrencyController::class);
 	Route::resource('categories', \App\Http\Controllers\CategoryController::class);
-	
+
 });
 
 Route::middleware(['guest'])->group(function () {

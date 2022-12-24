@@ -1,11 +1,11 @@
-<?php 
+<?php
 	return [
 		'status' => [
 			1 	=> 	'Activo',
 			2	=>	'Inactivo'
 		],
 
-		'status-badge' =>[
+		'status_badge' =>[
 			1	=>	'primary',
 			2	=>	'danger'
 		],
