@@ -20,6 +20,7 @@ class User extends Authenticatable
         'document_number',
         'fullname',
         'username',
+        'amount',
         'phone',
         'email',
         'password',

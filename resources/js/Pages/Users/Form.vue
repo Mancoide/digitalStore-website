@@ -8,7 +8,7 @@
                     color="primary"
                     label="Nro. de Documento"
                 />
-            </div> 
+            </div>
             <div class="form-group col-md-9">
                 <v-text-field
                     :error-messages="formData.errors.fullname"
@@ -16,7 +16,7 @@
                     color="primary"
                     label="Nombre Completo"
                 />
-            </div> 
+            </div>
         </div>
         <div class="row mb-3">
             <div class="form-group col-md-4">
@@ -26,7 +26,7 @@
                     color="primary"
                     label="Usuario"
                 />
-            </div> 
+            </div>
             <div class="form-group col-md-4">
                 <v-text-field
                     :error-messages="formData.errors.email"
@@ -36,16 +36,16 @@
                     label="E-mail"
                     placeholder="johndoe@gmail.com"
                 />
-            </div> 
+            </div>
             <div class="form-group col-md-4">
                 <v-text-field
                     :error-messages="formData.errors.phone"
                     v-model="formData.phone"
                     color="primary"
                     type="phone"
-                    label="Contraseña"
+                    label="Celular"
                 />
-            </div> 
+            </div>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
@@ -56,7 +56,7 @@
                     type="password"
                     label="Contraseña"
                 />
-            </div> 
+            </div>
             <div class="form-group col-md-8">
                 <v-select
                     :error-messages="formData.errors.rol_id"

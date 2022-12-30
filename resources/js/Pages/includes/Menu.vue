@@ -33,6 +33,9 @@
                 <Link href="/clients" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-account-multiple" title="Clientes" value="/clients" />
                 </Link>
+                <Link href="/creditTransactions" as="button" class="w-100 text-left item-menu-group">
+                    <v-list-item prepend-icon="mdi-cash" title="Saldo" value="/creditTransactions" />
+                </Link>
 
             </v-list-group>
 
