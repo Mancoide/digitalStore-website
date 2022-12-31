@@ -32,6 +32,30 @@ class CreditTransactionController extends Controller
             'balance' => $request->amount
     	]);
 
+        $user = User::find($request->user_id);
+        $sumAmount = $user->amount + $request->amount;
+        $user->update(['amount' => $sumAmount]);
+
+        return Redirect::route('creditTransactions.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
+    }
+
+    public function edit(CreditTransaction $creditTransaction)
+    {
+        $users = User::find($creditTransaction->user_id);
+
+        return Inertia::render('creditTransactions/Edit', compact('creditTransaction', 'users'));
+    }
+
+    public function update(CreditTransaction $creditTransaction, CreateCreditRequest $request)
+    {
+        $creditTransaction->update([
+            'user_id' => $request->user_id,
+            'amount'  => $request->amount,
+            'balance' => $request->amount
+        ]);
 
         $user = User::find($request->user_id);
         $sumAmount = $user->amount + $request->amount;

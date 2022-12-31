@@ -25,6 +25,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::resource('currencies', \App\Http\Controllers\CurrencyController::class);
 	Route::resource('categories', \App\Http\Controllers\CategoryController::class);
 
+    Route::resource('password', \App\Http\Controllers\ChangePasswordController::class);
+
 });
 
 Route::middleware(['guest'])->group(function () {

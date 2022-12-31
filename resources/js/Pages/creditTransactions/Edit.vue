@@ -2,11 +2,11 @@
     <v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
             <v-row justify="space-between pa-4 mb-2">
-				<h5>Editar Cliente</h5>
+				<h5>Editar Saldo</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.put('/clients/'+client.id)">
-                    <FormVue :roles="roles" :formData="form" />
+                <form @submit.prevent="form.put('/creditTransactions/'+creditTransaction.id)">
+                    <FormVue :users="users" :formData="form" />
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
@@ -20,7 +20,7 @@
                                 </v-btn>
                             </div>
                             <div class="col-6">
-                                <Link href="/clients" as="button" class="w-100">
+                                <Link href="/creditTransactions" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
                                         color="danger"
@@ -49,15 +49,13 @@
             Link
         },
         props: {
-            client: Object
+            users: Object,
+            creditTransaction: Object
         },
         setup (props) {
             const form = useForm({
-                email: props.client?.email ?? null,
-                fullname: props.client?.fullname ?? null,
-                phone: props.client?.phone ?? null,
-                country: props.client?.country ?? null,
-                city: props.client?.city ?? null,
+                user_id: props.creditTransaction?.user_id ?? null,
+                amount: props.creditTransaction?.amount ?? null
             });
 
             return { form }

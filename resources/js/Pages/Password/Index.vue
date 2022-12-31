@@ -2,11 +2,31 @@
     <v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
             <v-row justify="space-between pa-4 mb-2">
-				<h5>Editar Usuario</h5>
+				<h5>Cambiar Contraseña</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.put('/users/'+user.id)">
-                    <FormVue :roles="roles" :formData="form" />
+                <form @submit.prevent="form.post('/Password')">
+                    <FormVue :formData="form" />
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <v-text-field
+                                :error-messages="formData.errors.password"
+                                v-model="formData.password"
+                                color="primary"
+                                type="password"
+                                label="Contraseña"
+                            />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <v-text-field
+                                :error-messages="formData.errors.ConfirmPassword"
+                                v-model="formData.ConfirmPassword"
+                                color="primary"
+                                type="password"
+                                label="Confirmar Contraseña"
+                            />
+                        </div>
+                    </div>
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
@@ -20,7 +40,7 @@
                                 </v-btn>
                             </div>
                             <div class="col-6">
-                                <Link href="/users" as="button" class="w-100">
+                                <Link href="/" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
                                         color="danger"
@@ -49,20 +69,14 @@
             Link
         },
         props: {
-            roles: Object,
             user: Object
         },
         setup (props) {
             const form = useForm({
-                document_number: props.user?.document_number ?? null,
-                email: props.user?.email ?? null,
-                fullname: props.user?.fullname ?? null,
-                username: props.user?.username ?? null,
-                phone: props.user?.phone ?? null,
-                password: null,
-                rol_id: props.user?.rol_id ?? null,
+                id: props.user.id ?? null,
+                password: null
             });
-            
+
             return { form }
         }
     }
