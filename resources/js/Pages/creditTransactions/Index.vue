@@ -32,7 +32,7 @@
 									<TableActionsVue :items="items" :idRegister="creditTransaction.id" />
 								</td>
 								<td>{{ creditTransaction.id }}</td>
-								<td>{{ creditTransaction.user_id }}</td>
+								<td>{{ creditTransaction.user.fullname }}</td>
 								<td>{{ creditTransaction.amount }}</td>
 								<td>{{ creditTransaction.balance }}</td>
 							</tr>

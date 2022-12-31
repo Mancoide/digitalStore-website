@@ -12,10 +12,11 @@ class CreditTransaction extends Authenticatable
 {
     use LaratrustUserTrait;
     use Notifiable;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = ['user_id','amount','balance'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

@@ -13,7 +13,7 @@ class CreditTransactionController extends Controller
 {
     public function index()
     {
-    	$creditTransactions = CreditTransaction::orderBy('id', 'DESC')->paginate(30);
+    	$creditTransactions = CreditTransaction::with(relations:'user')->orderBy('id', 'DESC')->paginate(30);
 
     	return Inertia::render('creditTransactions/Index', compact('creditTransactions'));
     }
