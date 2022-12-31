@@ -1,14 +1,6 @@
 <template>
     <div class="card-body">
         <div class="row mb-3">
-            <div class="form-group col-md-3">
-                <v-text-field
-                    :error-messages="formData.errors.document_number"
-                    v-model="formData.document_number"
-                    color="primary"
-                    label="Nro. de Documento"
-                />
-            </div>
             <div class="form-group col-md-9">
                 <v-text-field
                     :error-messages="formData.errors.fullname"
@@ -19,14 +11,6 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="form-group col-md-4">
-                <v-text-field
-                    :error-messages="formData.errors.username"
-                    v-model="formData.username"
-                    color="primary"
-                    label="Usuario"
-                />
-            </div>
             <div class="form-group col-md-4">
                 <v-text-field
                     :error-messages="formData.errors.email"
@@ -42,32 +26,27 @@
                     :error-messages="formData.errors.phone"
                     v-model="formData.phone"
                     color="primary"
-                    type="phone"
-                    label="Celular"
+                    label="Teléfono"
+                    placeholder="(595)99x XXX XXX"
                 />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
                 <v-text-field
-                    :error-messages="formData.errors.password"
-                    v-model="formData.password"
+                    :error-messages="formData.errors.country"
+                    v-model="formData.country"
                     color="primary"
-                    type="password"
-                    label="Contraseña"
+                    label="País"
                 />
             </div>
-            <div class="form-group col-md-8">
-                <v-select
-                    :error-messages="formData.errors.rol_id"
+            <div class="form-group col-md-3">
+                <v-text-field
+                    :error-messages="formData.errors.city"
+                    v-model="formData.city"
                     color="primary"
-                    label="Rol"
-                    v-model="formData.rol_id"
-                    :items="roles"
-                    item-title="display_name"
-                    item-value="id"
-                >
-                </v-select>
+                    label="Ciudad"
+                />
             </div>
         </div>
     </div>
