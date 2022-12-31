@@ -1,17 +1,16 @@
 <template>
-    <v-container>
+	<v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
             <v-row justify="space-between pa-4 mb-2">
-				<h5>Editar Moneda</h5>
+				<h5>Nuevo Plan</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.put('/currencies/'+currency.id)">
-                    <FormVue :statuses="statuses" :formData="form" />
+                <form @submit.prevent="form.post('/packages')">
+                    <FormVue :formData="form" />
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
                                 <v-btn
-                                    :disabled="form.processing"
                                     type="submit"
                                     rounded="lg"
                                     color="success"
@@ -21,7 +20,7 @@
                                 </v-btn>
                             </div>
                             <div class="col-6">
-                                <Link href="/currencies" as="button" class="w-100">
+                                <Link href="/packages" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
                                         color="danger"
@@ -30,7 +29,6 @@
                                             Cancelar
                                     </v-btn>
                                 </Link>
-                                
                             </div>
                         </div>
                     </div>
@@ -49,20 +47,13 @@
             FormVue,
             Link
         },
-        props: {
-            statuses: Object,
-            currency: Object
-        },
-        setup (props) {
+        setup () {
             const form = useForm({
-                symbol: props.currency?.symbol ?? null,
-                code: props.currency?.code ?? null,
-                name: props.currency?.name ?? null,
-                status_id: props.currency?.status_id ?? null
+                name: null,
             });
             
             return { form }
-        }
+        },
     }
 
 </script>

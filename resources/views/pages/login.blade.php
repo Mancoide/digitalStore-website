@@ -17,7 +17,7 @@
                     			<input class="form-control" id="floatingPassword" type="password" placeholder="Contraseña" name="password">
                     			<label for="floatingPassword">Contraseña</label>
                   			</div>
-                  			<button class="btn btn-primary btn-lg" type="submit">Iniciar Sesión</button>
+                  			<button class="btn btn-primary btn-lg w-100" type="submit">Iniciar Sesión</button>
                         {{ Form::close() }}
               		</div>
             	</div>

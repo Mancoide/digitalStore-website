@@ -11,3 +11,11 @@
     color: #03B1CA;
     /* color: #F73903; */
 }
+
+.fileText {
+    text-decoration: none;
+    color: #03B1CA;
+    font-weight: 400;
+    /* min-height: 500px; */
+    /* min-width: 500px; */
+  }

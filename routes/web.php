@@ -22,6 +22,8 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::resource('currencies', \App\Http\Controllers\CurrencyController::class);
 	Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+	Route::resource('packages', \App\Http\Controllers\PackageController::class);
+	Route::resource('products', \App\Http\Controllers\ProductController::class);
 	
 });
 
