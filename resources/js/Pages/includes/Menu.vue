@@ -27,8 +27,8 @@
                         </template>
                     </v-list-item>
                 </template>
-                <Link href="/users" as="button" class="w-100 text-left item-menu-group">
-                    <v-list-item prepend-icon="mdi-vector-intersection" title="Productos" value="/users" />
+                <Link href="/products" as="button" class="w-100 text-left item-menu-group">
+                    <v-list-item prepend-icon="mdi-vector-intersection" title="Productos" value="/products" />
                 </Link>
                 <Link href="/clients" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-account-multiple" title="Clientes" value="/clients" />
@@ -84,6 +84,9 @@
                     <v-list-item prepend-icon="mdi-shape" title="Categorias" value="/categories" />
                 </Link>
 
+                <Link href="/packages" as="button" class="w-100 text-left item-menu-group">
+                    <v-list-item prepend-icon="mdi-package-variant-closed" title="Planes" value="/packages" />
+                </Link>
             </v-list-group>
         </v-list>
     </v-navigation-drawer>

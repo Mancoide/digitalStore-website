@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resource('password', \App\Http\Controllers\ChangePasswordController::class);
 
+	Route::resource('packages', \App\Http\Controllers\PackageController::class);
+	Route::resource('products', \App\Http\Controllers\ProductController::class);
+
 });
 
 Route::middleware(['guest'])->group(function () {

@@ -48,6 +48,26 @@ class FirstDatasSeeds extends Seeder
                 'badge' => 'danger',
                 'data_model' => 'App\\Models\\Category'
             ],
+            [
+                'name' => 'Activo', // 7
+                'badge' => 'primary',
+                'data_model' => 'App\\Models\\Package'
+            ],
+            [
+                'name' => 'Inactivo', // 8
+                'badge' => 'danger',
+                'data_model' => 'App\\Models\\Package'
+            ],
+            [
+                'name' => 'Activo', // 9
+                'badge' => 'primary',
+                'data_model' => 'App\\Models\\Product'
+            ],
+            [
+                'name' => 'Inactivo', // 10
+                'badge' => 'danger',
+                'data_model' => 'App\\Models\\Product'
+            ],
         ];
 
         foreach($arrayStatuses as $statuses) 

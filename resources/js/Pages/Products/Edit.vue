@@ -2,11 +2,11 @@
     <v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
             <v-row justify="space-between pa-4 mb-2">
-				<h5>Editar Moneda</h5>
+				<h5>Editar Producto</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.put('/currencies/'+currency.id)">
-                    <FormVue :statuses="statuses" :formData="form" />
+                <form @submit.prevent="form.post('/products/'+product.id)">
+                    <FormVue :statuses="statuses" :categories="categories" :packages="packages" :formData="form" />
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
@@ -21,7 +21,7 @@
                                 </v-btn>
                             </div>
                             <div class="col-6">
-                                <Link href="/currencies" as="button" class="w-100">
+                                <Link href="/products" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
                                         color="danger"
@@ -51,15 +51,21 @@
         },
         props: {
             statuses: Object,
-            currency: Object
+            packages: Object,
+            categories: Object,
+            product: Object
         },
         setup (props) {
+
             const form = useForm({
-                symbol: props.currency?.symbol ?? null,
-                code: props.currency?.code ?? null,
-                name: props.currency?.name ?? null,
-                status_id: props.currency?.status_id ?? null
-            });
+                logo: null,
+                name: props.product?.name ?? null,
+                status_id: props.product?.status_id ?? null,
+                previewImage: props.product?.media[0]?.original_url,
+                category_id: props.product?.category_id,
+                packages: props.product?.packages?.map((packageItem) => packageItem.id) ?? [],
+                _method: 'put'
+             });
             
             return { form }
         }

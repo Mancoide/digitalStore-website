@@ -41,7 +41,7 @@
 
 <script>
     import FormVue from './Form.vue';
-    import { Inertia, Link, useForm } from '@inertiajs/inertia-vue3';
+    import { Link, useForm } from '@inertiajs/inertia-vue3';
 
     export default {
         components: {
