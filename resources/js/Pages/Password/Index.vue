@@ -59,12 +59,10 @@
 </template>
 
 <script>
-    import FormVue from './Form.vue';
     import { Link, useForm } from '@inertiajs/inertia-vue3';
 
     export default {
         components: {
-            FormVue,
             Link
         },
         props: {
