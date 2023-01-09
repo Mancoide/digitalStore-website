@@ -50,6 +50,7 @@
         setup () {
             const form = useForm({
                 name: null,
+                cost: null
             });
             
             return { form }

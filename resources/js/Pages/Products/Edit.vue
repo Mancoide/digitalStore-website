@@ -4,38 +4,36 @@
             <v-row justify="space-between pa-4 mb-2">
 				<h5>Editar Producto</h5>
 			</v-row>
-			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.post('/products/'+product.id)">
-                    <FormVue :statuses="statuses" :categories="categories" :packages="packages" :formData="form" />
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-6">
+            <form @submit.prevent="form.post('/products/'+product.id)">
+                <FormVue :statuses="statuses" :categories="categories" :packages="packages" :formData="form" />
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            <v-btn
+                                :disabled="form.processing"
+                                type="submit"
+                                rounded="lg"
+                                color="success"
+                                class="w-100"
+                            >
+                                Guardar
+                            </v-btn>
+                        </div>
+                        <div class="col-6">
+                            <Link href="/products" as="button" class="w-100">
                                 <v-btn
-                                    :disabled="form.processing"
-                                    type="submit"
                                     rounded="lg"
-                                    color="success"
-                                    class="w-100"
+                                    color="danger"
+                                    class="w-100 text-white"
                                 >
-                                    Guardar
+                                        Cancelar
                                 </v-btn>
-                            </div>
-                            <div class="col-6">
-                                <Link href="/products" as="button" class="w-100">
-                                    <v-btn
-                                        rounded="lg"
-                                        color="danger"
-                                        class="w-100 text-white"
-                                    >
-                                            Cancelar
-                                    </v-btn>
-                                </Link>
-                                
-                            </div>
+                            </Link>
+                            
                         </div>
                     </div>
-                </form>
-            </v-card>
+                </div>
+            </form>
         </v-responsive>
     </v-container>
 </template>
@@ -56,6 +54,21 @@
             product: Object
         },
         setup (props) {
+            console.log(props)
+            let quantityArray = [];
+            let costsArray = [];
+
+            props.packages.map((pack) => {
+
+                quantityArray.push(
+                    props.product?.packages?.find((item) => item.id === pack.id)?.pivot.quantity_people
+                )
+
+                costsArray.push(
+                    props.product?.packages?.find((item) => item.id === pack.id)?.pivot.cost
+                )
+            })
+
 
             const form = useForm({
                 logo: null,
@@ -64,7 +77,9 @@
                 previewImage: props.product?.media[0]?.original_url,
                 category_id: props.product?.category_id,
                 packages: props.product?.packages?.map((packageItem) => packageItem.id) ?? [],
-                _method: 'put'
+                _method: 'put',
+                quatity: quantityArray,
+                costs: costsArray
              });
             
             return { form }

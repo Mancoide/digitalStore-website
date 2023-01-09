@@ -1,8 +1,8 @@
 <template>
     <v-layout>
-        <v-app>
+        <v-app app>
             <Menu />
-            <Header />
+            <Header/>
             <v-main>
                 <v-content>
                     <NotificationBoxVue />

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->decimal('cost', 14, 2);
             $table->foreignId('status_id')->default(7);
             $table->timestamps();
         });

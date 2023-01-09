@@ -65,7 +65,7 @@ class UserController extends Controller
 
         if($request->password) $user->update(['password' => $request->password]);
 
-        $user->syncRoles([$request->rol_id]);
+        $user->roles()->sync([$request->rol_id]);
 
         return Redirect::route('users.index')->with('notification', [
             'status' => 'success',

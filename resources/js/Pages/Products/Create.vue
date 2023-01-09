@@ -4,37 +4,35 @@
             <v-row justify="space-between pa-4 mb-2">
 				<h5>Nuevo Producto</h5>
 			</v-row>
-			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.post('/products')">
-                    <FormVue :categories="categories" :packages="packages" :formData="form" />
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-6">
+            <form @submit.prevent="form.post('/products')">
+                <FormVue :categories="categories" :packages="packages" :formData="form" />
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            <v-btn
+                                :disabled="form.processing"
+                                type="submit"
+                                rounded="lg"
+                                color="success"
+                                class="w-100"
+                            >
+                                Guardar
+                            </v-btn>
+                        </div>
+                        <div class="col-6">
+                            <Link href="/products" as="button" class="w-100">
                                 <v-btn
-                                    :disabled="form.processing"
-                                    type="submit"
                                     rounded="lg"
-                                    color="success"
-                                    class="w-100"
+                                    color="danger"
+                                    class="w-100 text-white"
                                 >
-                                    Guardar
+                                        Cancelar
                                 </v-btn>
-                            </div>
-                            <div class="col-6">
-                                <Link href="/products" as="button" class="w-100">
-                                    <v-btn
-                                        rounded="lg"
-                                        color="danger"
-                                        class="w-100 text-white"
-                                    >
-                                            Cancelar
-                                    </v-btn>
-                                </Link>
-                            </div>
+                            </Link>
                         </div>
                     </div>
-                </form>
-            </v-card>
+                </div>
+            </form>
         </v-responsive>
     </v-container>
 </template>
@@ -58,7 +56,9 @@
                 previewImage: null,
                 name: null,
                 category_id: null,
-                packages: []
+                packages: [],
+                quatity: [],
+                costs:[]
             });
             
             return { form }

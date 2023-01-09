@@ -15,7 +15,7 @@ class RoleController extends Controller
     {
         $roles = Role::orderBy('name', 'ASC');
 
-        if(request()->search) 
+        if(request()->search)
         {
             $roles = $roles->where('name', 'like', '%'. request()->search .'%');
         }
@@ -27,11 +27,12 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = $this->getPermissions();
-        return Inertia::render('Roles/Create', compact('permissions'));
+        $definitions = config('constants.definitions');
+        return Inertia::render('Roles/Create', compact('permissions', 'definitions'));
     }
 
     public function store(CreateRoleRequest $request)
-    {   
+    {
         $role = Role::create([
             'display_name'  => $request->name,
             'description'   => $request->description,
@@ -50,8 +51,9 @@ class RoleController extends Controller
     {
         $permissions = $this->getPermissions();
         $role->load(['permissions']);
+        $definitions = config('constants.definitions');
 
-        return Inertia::render('Roles/Edit', compact('permissions', 'role'));
+        return Inertia::render('Roles/Edit', compact('permissions', 'role', 'definitions'));
     }
 
     public function update(Role $role, CreateRoleRequest $request)
@@ -63,7 +65,7 @@ class RoleController extends Controller
         ]);
 
         $role->syncPermissions(request()->permissions);
-        
+
         return Redirect::route('roles.index')->with('notification', [
             'status' => 'success',
             'message'=> 'Guardado Exitosamente',

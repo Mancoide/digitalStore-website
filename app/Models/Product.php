@@ -41,6 +41,11 @@ class Product extends Model implements HasMedia
      */
     public function packages()
     {
-        return $this->belongsToMany(Package::class, 'package_product', 'product_id', 'package_id');
+        return $this->belongsToMany(Package::class, 'package_product', 'product_id', 'package_id')->withPivot('cost', 'quantity_people');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status_id', 9);
     }
 }

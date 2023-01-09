@@ -1,7 +1,7 @@
 <template>
     <div class="card-body">
         <div class="row mb-3">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-12">
                 <v-text-field
                     :error-messages="formData.errors.fullname"
                     v-model="formData.fullname"
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <v-text-field
                     :error-messages="formData.errors.email"
                     v-model="formData.email"
@@ -21,7 +21,7 @@
                     placeholder="johndoe@gmail.com"
                 />
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <v-text-field
                     :error-messages="formData.errors.phone"
                     v-model="formData.phone"
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <v-text-field
                     :error-messages="formData.errors.country"
                     v-model="formData.country"
@@ -40,7 +40,7 @@
                     label="País"
                 />
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-6">
                 <v-text-field
                     :error-messages="formData.errors.city"
                     v-model="formData.city"

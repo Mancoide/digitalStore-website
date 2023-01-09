@@ -1,12 +1,12 @@
 <template>
-    <v-container>
+	<v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
             <v-row justify="space-between pa-4 mb-2">
-				<h5>Editar Cliente</h5>
+				<h5>Nuevo Saldo</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.put('/clients/'+client.id)">
-                    <FormVue :roles="roles" :formData="form" />
+                <form @submit.prevent="form.post('/creditTransactions')">
+                    <FormVue :users="users" :formData="form" />
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
@@ -20,7 +20,7 @@
                                 </v-btn>
                             </div>
                             <div class="col-6">
-                                <Link href="/clients" as="button" class="w-100">
+                                <Link href="/creditTransactions" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
                                         color="danger"
@@ -41,7 +41,7 @@
 
 <script>
     import FormVue from './Form.vue';
-    import { Link, useForm } from '@inertiajs/inertia-vue3';
+    import { Inertia, Link, useForm } from '@inertiajs/inertia-vue3';
 
     export default {
         components: {
@@ -49,19 +49,18 @@
             Link
         },
         props: {
-            client: Object
+            users: Object
         },
-        setup (props) {
+        setup () {
             const form = useForm({
-                email: props.client?.email ?? null,
-                fullname: props.client?.fullname ?? null,
-                phone: props.client?.phone ?? null,
-                country: props.client?.country ?? null,
-                city: props.client?.city ?? null,
+                user_id: null,
+                amount: null,
+                observation: null,
+                balance_adjust: null
             });
 
             return { form }
-        }
+        },
     }
 
 </script>

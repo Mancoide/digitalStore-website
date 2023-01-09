@@ -1,8 +1,12 @@
 <template>
-    <v-app-bar>
-        <v-app-bar-nav-icon variant="text" @click.stop="(menuDrawer = !menuDrawer)"></v-app-bar-nav-icon>
+    <v-app-bar app>
+        <!-- <v-app-bar-nav-icon variant="text"></v-app-bar-nav-icon> -->
 
         <v-spacer></v-spacer>
+
+        <span class="fw-bold">
+            Saldo  ${{ this.$page.props.auth.amount }}
+        </span>
 
         <v-menu transition="fab-transition">
             <template v-slot:activator="{ props }">
@@ -31,10 +35,11 @@ export default {
         CIcon,
     },
     setup() {
+
         return {
             cilUser
         }
-    }
+    },
 }
 
 </script>

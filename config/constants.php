@@ -14,5 +14,22 @@
 			1 	=> 	'Usuarios',
 			2 	=>	'Roles'
 		],
+		'type-movements' => [
+			1 => 'Agregar Cuenta',
+			5 => 'Ajustar Cuenta',
+			9 => 'Remover cuenta'
+        ],
+
+        'definitions' => [
+            'Usuarios',
+            'Roles',
+            'Clientes',
+            'Monedas',
+            'Productos',
+            'Planes',
+            'Saldos',
+            'Cuentas',
+            'Categorias',
+        ]
 	];
 ?>

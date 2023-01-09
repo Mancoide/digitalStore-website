@@ -40,7 +40,7 @@
         {{-- <link rel="stylesheet" href="{{ cached_asset('assets/fontawesome/css/all.css') }}" crossorigin="anonymous">  --}}
         {{-- <script src="{{ cached_asset('assets/js/main.js') }}" type="text/javascript"></script> --}}
         {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
-        
+
         <script type="text/javascript">
             @if($errors->any())
                 ValidationsMessages({!! json_encode($errors->messages()) !!});

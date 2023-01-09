@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PackageProduct extends Model
 {
     use HasFactory;
+    protected $table = 'package_product';
 
-    protected $fillable = ['product_id', 'package_id'];
+    protected $fillable = ['product_id', 'package_id', 'quantity_people', 'cost'];
 
+    public $timestamps = null;
     /**
      * Get the product that owns the PackageProduct
      *

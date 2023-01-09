@@ -1,6 +1,8 @@
 <template>
     <v-navigation-drawer
         permanent
+        expand-on-hover
+        rail
     >
         <Link href="/" as="button" class="w-100 text-left item-menu-group">
             <v-img src="/assets/images/digitalStore.png" />
@@ -36,7 +38,9 @@
                 <Link href="/creditTransactions" as="button" class="w-100 text-left item-menu-group">
                     <v-list-item prepend-icon="mdi-cash" title="Saldo" value="/creditTransactions" />
                 </Link>
-
+                <Link href="/accounts" as="button" class="w-100 text-left item-menu-group">
+                    <v-list-item prepend-icon="mdi-account-cash" title="Cuentas" value="/accounts" />
+                </Link>
             </v-list-group>
 
             <v-divider></v-divider>

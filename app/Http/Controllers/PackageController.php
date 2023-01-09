@@ -43,7 +43,8 @@ class PackageController extends Controller
     public function store(CreatePackageRequest $request)
     {
         Package::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'cost' => $request->cost
         ]);
 
         return Redirect::route('packages.index')->with('notification', [
@@ -88,6 +89,7 @@ class PackageController extends Controller
     {
         $package->update([
             'name' => $request->name,
+            'cost' => $request->cost,
             'status_id' =>  $request->status_id
         ]);
 

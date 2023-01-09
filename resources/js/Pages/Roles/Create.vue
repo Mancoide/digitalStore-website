@@ -6,7 +6,7 @@
 			</v-row>
 			<v-card class="p-0 m-0">
                 <form @submit.prevent="form.post('/roles')">
-                    <FormVue :permissions="permissions" :formData="form" />
+                    <FormVue :permissions="permissions" :formData="form" :definitions="definitions"/>
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
@@ -29,7 +29,7 @@
                                             Cancelar
                                     </v-btn>
                                 </Link>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -49,6 +49,7 @@
             Link
         },
         props: {
+            definitions: Object,
             permissions: Object
         },
         setup () {
@@ -57,7 +58,7 @@
                 name: '',
                 description: ''
             });
-            
+
             return { form }
         },
     }

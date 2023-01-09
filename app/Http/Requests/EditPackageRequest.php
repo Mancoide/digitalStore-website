@@ -24,7 +24,8 @@ class EditPackageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'cost' => 'required|numeric'
         ];
     }
 }

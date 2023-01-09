@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Package;
 use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -68,6 +70,33 @@ class FirstDatasSeeds extends Seeder
                 'badge' => 'danger',
                 'data_model' => 'App\\Models\\Product'
             ],
+            [
+                'name' => 'Activo', // 11
+                'badge' => 'primary',
+                'data_model' => 'App\\Models\\Movement'
+            ],
+            [
+                'name' => 'Inactivo', // 12
+                'badge' => 'danger',
+                'data_model' => 'App\\Models\\Movement'
+            ],
+
+            [
+                'name' => 'Activo', // 13
+                'badge' => 'primary',
+                'data_model' => 'App\\Models\\Account'
+            ],
+            [
+                'name' => 'Agotado', // 14
+                'badge' => 'danger',
+                'data_model' => 'App\\Models\\Account'
+            ],
+
+            [
+                'name' => 'Borrado', // 15
+                'badge' => 'danger',
+                'data_model' => 'App\\Models\\Account'
+            ],
         ];
 
         foreach($arrayStatuses as $statuses) 
@@ -99,5 +128,24 @@ class FirstDatasSeeds extends Seeder
         $permissions = \App\Models\Permission::get()->pluck('id')->toArray();
 
         $newRoles[0]->attachPermissions($permissions);
+
+        $packages = [
+            'Plan Familiar',
+            'Plan Individual'
+        ];
+
+        foreach($packages as $package) 
+        {
+            Package::create([
+                'name' => $package,
+                'cost' => 9.99, 
+                'status_id' => 7
+            ]);
+        }
+
+        Category::create([
+            'name' => 'Cuentas Online',
+            'status_id' => 5
+        ]);
     }
 }

@@ -56,6 +56,7 @@
 
             const form = useForm({
                 name: props.packageInfo?.name ?? null,
+                cost: props.packageInfo?.cost ?? null,
                 status_id: props.packageInfo?.status_id ?? null
             });
             

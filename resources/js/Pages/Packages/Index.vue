@@ -21,6 +21,7 @@
 								<td></td>
 								<td>#</td>
 								<td>Plan</td>
+								<td>Costo</td>
 								<td>Estado</td>
 							</tr>
 						</thead>
@@ -31,6 +32,7 @@
 								</td>
 								<td>{{ packagedata.id }}</td>
 								<td>{{ packagedata.name }}</td>
+								<td>{{ packagedata.cost }}</td>
 								<td class="text-center text-white">
 									<v-badge 
 										:color="packagedata.status.badge"

@@ -1,7 +1,7 @@
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import DefaultLayout from '@/Pages/includes/Layout.vue' 
+import DefaultLayout from '@/Pages/includes/Layout.vue'
 import { InertiaProgress } from '@inertiajs/progress'
 // Vuetify
 import 'vuetify/styles';
@@ -10,6 +10,8 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
+// //Mask
+// import * as VueInputMask from 'vue-inputmask';
 
 const vuetify = createVuetify({
   	components,
@@ -35,13 +37,16 @@ createInertiaApp({
 			module.default.layout =  DefaultLayout;
 		});
 
+
 		return page;
   	},
 	setup({ el, App, props, plugin }) {
-		createApp({ render: () => h(App, props) })
-		.use(plugin)
-		.use(vuetify)
-		.mount(el)
+		return createApp({ render: () => h(App, props) })
+			.use(plugin)
+            // .use(VueInputMask.default)
+			.use(vuetify)
+            .mount(el);
+
 	},
 });
 

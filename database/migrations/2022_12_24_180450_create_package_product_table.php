@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('package_product', function (Blueprint $table) {
             $table->foreignId('product_id');
             $table->foreignId('package_id');
+            $table->integer('quantity_people');
+            $table->decimal('cost', 14, 2);
         });
     }
 

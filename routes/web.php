@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function(){
 	Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+	Route::post('/buy', [\App\Http\Controllers\HomeController::class, 'buyAccounts'])->name('home.buy');
+
 	Route::resource('users', \App\Http\Controllers\UserController::class);
 	Route::resource('creditTransactions', \App\Http\Controllers\CreditTransactionController::class);
 	Route::resource('clients', \App\Http\Controllers\ClientController::class);
@@ -24,10 +26,11 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::resource('currencies', \App\Http\Controllers\CurrencyController::class);
 	Route::resource('categories', \App\Http\Controllers\CategoryController::class);
-	
+
 	Route::resource('packages', \App\Http\Controllers\PackageController::class);
 	Route::resource('products', \App\Http\Controllers\ProductController::class);
-	
+	Route::resource('accounts', \App\Http\Controllers\AccountController::class);
+
 });
 
 Route::middleware(['guest'])->group(function () {

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Package;
+use App\Models\PackageProduct;
 use App\Models\Product;
 use App\Models\Status;
 use Illuminate\Http\Request;
@@ -55,7 +56,15 @@ class ProductController extends Controller
                 'status_id' => 9
             ]);
 
-            $product->packages()->attach($request->packages);
+            foreach($request->packages as $key => $package)
+            {
+                PackageProduct::create([
+                    'product_id' => $product->id, 
+                    'package_id' => $package, 
+                    'quantity_people' => $request->quatity[$key], 
+                    'cost' => $request->costs[$key]
+                ]);
+            }
 
             $product->addMediaFromRequest('logo')
                 ->toMediaCollection('productos');
@@ -110,7 +119,17 @@ class ProductController extends Controller
                 'status_id' => $request->status_id
             ]);
 
-            $product->packages()->sync($request->packages);
+            $product->packages()->detach();
+
+            foreach($request->packages as $key => $package)
+            {
+                PackageProduct::create([
+                    'product_id' => $product->id, 
+                    'package_id' => $package, 
+                    'quantity_people' => $request->quatity[$key], 
+                    'cost' => $request->costs[$key]
+                ]);
+            }
 
             if($request->logo)
             {

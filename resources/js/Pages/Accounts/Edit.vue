@@ -1,16 +1,17 @@
 <template>
-	<v-container>
+    <v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
             <v-row justify="space-between pa-4 mb-2">
-				<h5>Nuevo Saldo</h5>
+				<h5>Editar Cuenta</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.post('/creditTransactions')">
-                    <FormVue :users="users" :formData="form" />
+                <form @submit.prevent="form.put('/accounts/'+account.id)">
+                    <FormVue :statuses="statuses" :formData="form" :products="products" />
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
                                 <v-btn
+                                    :disabled="form.processing"
                                     type="submit"
                                     rounded="lg"
                                     color="success"
@@ -20,7 +21,7 @@
                                 </v-btn>
                             </div>
                             <div class="col-6">
-                                <Link href="/creditTransactions" as="button" class="w-100">
+                                <Link href="/accounts" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
                                         color="danger"
@@ -41,7 +42,8 @@
 
 <script>
     import FormVue from './Form.vue';
-    import { Inertia, Link, useForm } from '@inertiajs/inertia-vue3';
+    import { Link, useForm } from '@inertiajs/inertia-vue3';
+    import * as dayjs from 'dayjs';
 
     export default {
         components: {
@@ -49,16 +51,24 @@
             Link
         },
         props: {
-            users: Object
+            statuses: Object,
+            account: Object,
+            products: Object
         },
-        setup () {
+        setup (props) {
             const form = useForm({
-                user_id: null,
-                amount:null
+                email: props.account?.email,
+                password: props.account?.password,
+                product_id: props.account?.product_id,
+                package_id: props.account?.package_id,
+                accounts_available: props.account?.accounts_available,
+                description: props.account?.description,
+                subscription_date: dayjs(props.account.subscription_date).format('DD/MM/YYYY'),
+                status_id: props.account?.status_id
             });
 
             return { form }
-        },
+        }
     }
 
 </script>

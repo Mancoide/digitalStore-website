@@ -20,7 +20,7 @@
         </v-row>
         <v-row>
             <v-col class="col-md-6" v-for="(permissionArrays, permissionTitle) in permissions" :key="permissionTitle">
-                <v-card :title="permissionTitle.toString()">
+                <v-card :title="definitions[permissionTitle]">
                     <v-divider />
                     <template v-for="permission in permissionArrays" :key="permission.id">
                         <v-checkbox :label="permission.display_name" v-model="formData.permissions" :value="permission.id"></v-checkbox>
@@ -36,7 +36,8 @@
     export default {
         props: {
             permissions: Object,
-            formData: Object
+            formData: Object,
+            definitions: Object
         },
     }
 

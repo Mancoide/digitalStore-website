@@ -9,7 +9,7 @@ class Package extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'status_id'];
+    protected $fillable = ['name', 'cost', 'status_id'];
 
     /**
      * Get the status that owns the Package
