@@ -6,12 +6,11 @@
 			</v-row>
 			<v-card class="p-0 m-0">
                 <form @submit.prevent="form.post('/Password')">
-                    <FormVue :formData="form" />
                     <div class="row">
                         <div class="form-group col-md-4">
                             <v-text-field
-                                :error-messages="formData.errors.password"
-                                v-model="formData.password"
+                                :error-messages="form.errors.password"
+                                v-model="form.password"
                                 color="primary"
                                 type="password"
                                 label="Contraseña"
@@ -19,8 +18,8 @@
                         </div>
                         <div class="form-group col-md-4">
                             <v-text-field
-                                :error-messages="formData.errors.ConfirmPassword"
-                                v-model="formData.ConfirmPassword"
+                                :error-messages="form.errors.ConfirmPassword"
+                                v-model="form.ConfirmPassword"
                                 color="primary"
                                 type="password"
                                 label="Confirmar Contraseña"
