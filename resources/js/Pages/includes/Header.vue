@@ -18,9 +18,24 @@
               >
               </v-btn>
             </template>
-            <v-list>
-                <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
-            </v-list>
+            <v-card class="mx-auto" max-width="300" tile>
+                <v-list dense>
+                    <v-list-item-group v-model="selectedItem" color="primary" >
+                        <v-list-item>
+                            <v-btn color="black" dark href="/">
+                                <v-icon>mdi-key-change</v-icon>
+                                <span color="white">Contraseña</span>
+                            </v-btn>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-btn color="black" dark href="/logout">
+                                <v-icon>mdi-logout-variant</v-icon>
+                                <span color="white">Cerrar</span>
+                            </v-btn>
+                        </v-list-item>
+                    </v-list-item-group>
+                </v-list>
+            </v-card>
         </v-menu>
 
     </v-app-bar>

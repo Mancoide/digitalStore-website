@@ -12,7 +12,7 @@ class Transaction extends Model
     use Notifiable;
 
     protected $fillable = [
-        'type', 
+        'type',
         'user_id',
         'before',
         'amount',
@@ -31,7 +31,7 @@ class Transaction extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function create_by()
+    public function created_by()
     {
         return $this->belongsTo(User::class, 'createdBy');
     }

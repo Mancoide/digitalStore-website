@@ -32,7 +32,7 @@
 								<td>{{ transaction.user.fullname }}</td>
 								<td>{{ transaction.amount }}</td>
 								<td>{{ transaction.after }}</td>
-								<td>{{ transaction.createdBy.fullname }}</td>
+								<td>{{ transaction.created_by.fullname }}</td>
 							</tr>
 						</tbody>
 					</v-table>

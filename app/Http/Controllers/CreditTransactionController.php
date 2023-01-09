@@ -14,7 +14,7 @@ class CreditTransactionController extends Controller
 {
     public function index()
     {
-    	$transactions = Transaction::with('user', 'create_by')->orderBy('id', 'DESC')->paginate(30);
+    	$transactions = Transaction::with('user', 'created_by')->orderBy('id', 'DESC')->paginate(30);
 
     	return Inertia::render('Transactions/Index', compact('transactions'));
     }
@@ -27,14 +27,14 @@ class CreditTransactionController extends Controller
 
     public function store(CreateCreditRequest $request)
     {
-        DB::transaction(function () use ($request) 
+        DB::transaction(function () use ($request)
         {
             $typeTransaction = 'Credito';
             $user = User::find($request->user_id);
             $finalAmount = $request->amount;
             $observation = $request->observation;
-            
-            if($request->balance_adjust == true) 
+
+            if($request->balance_adjust == true)
             {
                 if($request->amount > $user->amount)
                 {
@@ -59,13 +59,29 @@ class CreditTransactionController extends Controller
                 'observation' => $observation,
                 'createdBy' => auth()->user()->id
             ]);
-    
+
             $user->update(['amount' => $finalAmount]);
         });
 
-        return Redirect::route('Transactions.index')->with('notification', [
+        return Redirect::route('creditTransactions.index')->with('notification', [
             'status' => 'success',
             'message'=> 'Guardado Exitosamente',
         ]);
     }
+
+    // public function edit(CreditTransaction $creditTransaction)
+    // {
+    //     $users = User::find($creditTransaction->user_id);
+
+    //     return Inertia::render('creditTransactions/Edit', compact('creditTransaction', 'users'));
+    // }
+
+    // public function update(CreditTransaction $creditTransaction, CreateCreditRequest $request)
+    // {
+    //     $creditTransaction->update([
+    //         'user_id' => $request->user_id,
+    //         'amount'  => $request->amount,
+    //         'balance' => $request->amount
+    //     ]);
+    // }
 }
