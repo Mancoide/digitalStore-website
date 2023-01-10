@@ -9,12 +9,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="robots" content="noindex">
 		<!-- Prism Syntax Highlighting-->
-		<link rel="stylesheet" href="{{ cached_asset('assets/plugins/toolbar/css/prism-toolbar.css') }}">
-		<link rel="stylesheet" href="{{ cached_asset('assets/css/prism-okaidia.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/plugins/toolbar/css/prism-toolbar.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/prism-okaidia.css') }}">
 		<!-- The Main Theme stylesheet (Contains also Bootstrap CSS)-->
-		<link rel="stylesheet" href="{{ cached_asset('assets/css/style.default.css') }}" id="theme-stylesheet">
+		<link rel="stylesheet" href="{{ asset('assets/css/style.default.css') }}" id="theme-stylesheet">
 		<!-- Custom stylesheet - for your changes-->
-		<link rel="stylesheet" type="text/css" href="{{ cached_asset('assets/css/style.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
 		{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" /> --}}
 		{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" /> --}}
@@ -26,7 +26,7 @@
 		@vite('resources/js/app.js')
 
 		{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-        {{-- <script src="{{ cached_asset('assets/js/bootstrap.bundle.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script> --}}
         <!-- JavaScript files-->
         {{-- <script src="{{ cached_asset('assets/js/js.cookie.min.js') }}"></script> --}}
         <!-- Main Theme JS File-->
