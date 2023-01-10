@@ -3,7 +3,6 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "deploy": "gh-pages -d resources"
     },
     "devDependencies": {
         "@mdi/font": "^7.0.96",
