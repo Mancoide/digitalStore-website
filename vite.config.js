@@ -3,12 +3,12 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-    server: {
-        host: 'https://digitalstore-website-production.up.railway.app/',
-        hmr: {
-            host: 'https://digitalstore-website-production.up.railway.app/'
-        }
-    },
+    // server: {
+    //     host: '0.0.0.0',
+    //     hmr: {
+    //         host: 'localhost'
+    //     }
+    // },
     plugins: [
         laravel({
             input: ['resources/js/app.js'],
@@ -16,4 +16,5 @@ export default defineConfig({
         }),
         vue()
     ],
+    base: '/digitalStore-website/'
 });
