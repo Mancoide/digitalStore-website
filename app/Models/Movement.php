@@ -60,4 +60,10 @@ class Movement extends Model
     {
         return $this->belongsTo(User::class, 'deletedBy');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status_id', 11);
+    }
+
 }

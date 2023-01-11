@@ -5,7 +5,7 @@
             <Header/>
             <v-main>
                 <v-content>
-                    <NotificationBoxVue />
+                    <!-- <NotificationBoxVue /> -->
                     <slot />
                 </v-content>
             </v-main>
@@ -22,7 +22,7 @@
         components: {
             Header,
             Menu,
-            NotificationBoxVue
+            // NotificationBoxVue
         }
     }
 </script>

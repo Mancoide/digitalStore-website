@@ -10,6 +10,9 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
+//Swal2
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 // //Mask
 // import * as VueInputMask from 'vue-inputmask';
 
@@ -43,6 +46,7 @@ createInertiaApp({
 	setup({ el, App, props, plugin }) {
 		return createApp({ render: () => h(App, props) })
 			.use(plugin)
+            .use(VueSweetalert2)
             // .use(VueInputMask.default)
 			.use(vuetify)
             .mount(el);
