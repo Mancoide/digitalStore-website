@@ -16,4 +16,5 @@ export default defineConfig({
         }),
         vue()
     ],
+    base: '/build/assets'
 });
