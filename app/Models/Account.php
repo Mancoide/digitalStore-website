@@ -19,6 +19,7 @@ class Account extends Model
         'accounts_available',
         'cost',
         'description',
+        'seller_id',
         'status_id',
         'createdBy',
         'deletedBy',
@@ -80,6 +81,16 @@ class Account extends Model
     public function deleted_by()
     {
         return $this->belongsTo(User::class, 'deletedBy');
+    }
+
+    /**
+     * Get the seller that owns the Account
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'seller_id');
     }
 
     public function scopeActive($query)

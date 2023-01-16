@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAccountRequest;
+use App\Http\Requests\UpdateAccountRequest;
 use App\Models\Account;
 use App\Models\Movement;
 use App\Models\PackageProduct;
@@ -15,6 +16,10 @@ use Inertia\Inertia;
 
 class AccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:accounts.index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,6 +39,8 @@ class AccountController extends Controller
      */
     public function create()
     {
+        $this->middleware('permission:accounts.create');
+
         $products = Product::with('packages')->active()->get();
 
         return Inertia::render('Accounts/Create', compact('products'));
@@ -47,6 +54,8 @@ class AccountController extends Controller
      */
     public function store(StoreAccountRequest $request)
     {
+        $this->middleware('permission:accounts.create');
+
         DB::transaction(function () use ($request) {
             $pivotPackage = PackageProduct::where('product_id', $request->product_id)
                 ->where('package_id', $request->package_id)
@@ -100,6 +109,8 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
+        $this->middleware('permission:accounts.edit');
+
         $products = Product::with('packages')->active()->get();
         $account->load(['product', 'package', 'status']);
         $statuses = Status::where('data_model', 'App\Models\Account')->get();
@@ -114,9 +125,42 @@ class AccountController extends Controller
      * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Account $account)
+    public function update(UpdateAccountRequest $request, Account $account)
     {
-        //
+        $this->middleware('permission:accounts.edit');
+
+        DB::transaction(function () use ($request, $account) {
+            $pivotPackage = PackageProduct::where('product_id', $request->product_id)
+                ->where('package_id', $request->package_id)
+                ->first();
+
+            $account->update([
+                'subscription_date' => $request->subscription_date,
+                'email' => $request->email,
+                'password' => $request->password,
+                'product_id' => $request->product_id,
+                'package_id' => $request->package_id,
+                'accounts_available' => $pivotPackage->quantity_people,
+                'cost' => $pivotPackage->cost,
+                'description' => $request->description,
+                'createdBy' => auth()->user()->id,
+            ]);
+
+            $movement = Movement::where('account_id', $account->id)
+                ->where('type_movement', 1)
+                ->first();
+
+            $movement->update([
+                'unitary_cost'  => $pivotPackage->cost,
+                'package_cost'  => $pivotPackage->package->cost,
+                'quantity_profiles' => $pivotPackage->quantity_people,
+            ]);
+        });
+
+        return Redirect::route('accounts.index')->with('notification', [
+            'status' => 'success',
+            'message'=> 'Guardado Exitosamente',
+        ]);
     }
 
     /**

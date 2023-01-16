@@ -18,7 +18,7 @@ class FirstDatasSeeds extends Seeder
      */
     public function run()
     {
-       
+
         $arrayStatuses = [
             [
                 'name' => 'Activo', // 1
@@ -87,11 +87,10 @@ class FirstDatasSeeds extends Seeder
                 'data_model' => 'App\\Models\\Account'
             ],
             [
-                'name' => 'Agotado', // 14
-                'badge' => 'danger',
+                'name' => 'En uso', // 14
+                'badge' => 'warning',
                 'data_model' => 'App\\Models\\Account'
             ],
-
             [
                 'name' => 'Borrado', // 15
                 'badge' => 'danger',
@@ -99,7 +98,7 @@ class FirstDatasSeeds extends Seeder
             ],
         ];
 
-        foreach($arrayStatuses as $statuses) 
+        foreach($arrayStatuses as $statuses)
         {
             Status::create($statuses);
         }
@@ -134,11 +133,11 @@ class FirstDatasSeeds extends Seeder
             'Plan Individual'
         ];
 
-        foreach($packages as $package) 
+        foreach($packages as $package)
         {
             Package::create([
                 'name' => $package,
-                'cost' => 9.99, 
+                'cost' => 9.99,
                 'status_id' => 7
             ]);
         }

@@ -16,8 +16,12 @@
             </Link>
 
             <v-divider></v-divider>
+            <Link href="/purchases" as="button" class="w-100 text-left item-menu-group">
+                <v-list-item prepend-icon="mdi-cast-variant" title="Mis Compras" value="/purchases" />
+            </Link>
+            <v-divider></v-divider>
 
-            <v-list-group value="ADMINISTRACION">
+            <v-list-group value="ADMINISTRACION" v-if="mainMenu.ADMINISTRACION">
                 <template v-slot:activator="{ props }">
                     <v-list-item
                         v-bind="props"
@@ -29,21 +33,23 @@
                         </template>
                     </v-list-item>
                 </template>
-                <Link href="/products" as="button" class="w-100 text-left item-menu-group">
+                <Link href="/products" as="button" class="w-100 text-left item-menu-group" v-if="mainMenu.ADMINISTRACION['products.index']">
                     <v-list-item prepend-icon="mdi-vector-intersection" title="Productos" value="/products" />
                 </Link>
-                <Link href="/clients" as="button" class="w-100 text-left item-menu-group">
+                <Link href="/clients" as="button" class="w-100 text-left item-menu-group" v-if="mainMenu.ADMINISTRACION['clients.index']">
                     <v-list-item prepend-icon="mdi-account-multiple" title="Clientes" value="/clients" />
                 </Link>
-                <Link href="/creditTransactions" as="button" class="w-100 text-left item-menu-group">
+                <Link href="/creditTransactions" as="button" class="w-100 text-left item-menu-group" v-if="mainMenu.ADMINISTRACION['transacctions.index']">
                     <v-list-item prepend-icon="mdi-cash" title="Saldo" value="/creditTransactions" />
                 </Link>
-                <Link href="/accounts" as="button" class="w-100 text-left item-menu-group">
+                <Link href="/accounts" as="button" class="w-100 text-left item-menu-group" v-if="mainMenu.ADMINISTRACION['accounts.index']">
                     <v-list-item prepend-icon="mdi-account-cash" title="Cuentas" value="/accounts" />
                 </Link>
             </v-list-group>
 
             <v-divider></v-divider>
+
+            <!-- {{ this.$page.props }} -->
 
             <v-list-group value="AUTENTICACION">
                 <template v-slot:activator="{ props }">
@@ -100,6 +106,66 @@
 import { Link } from '@inertiajs/inertia-vue3';
 
 export default {
+    data() {
+        let mainMenu = {}
+        let administrationArray = [
+            'products.index',
+            'clients.index',
+            'transacctions.index',
+            'accounts.index',
+        ]
+        let authenticationArray = [
+            'users.index',
+            'roles.index'
+        ]
+        let definitionsArray = [
+            'currencies.index',
+            'category.index',
+            'packages.index'
+        ]
+
+        this.$page?.props?.authUserPermissions.forEach(item => {
+            // ADMINISTRACION
+            if(administrationArray.includes(item.name))
+            {
+                mainMenu = {
+                    ...mainMenu,
+                    'ADMINISTRACION': {
+                        ...mainMenu.ADMINISTRACION,
+                        [item.name]: true
+                    }
+                }
+            }
+
+            // AUTENTICACION
+            if(authenticationArray.includes(item.name))
+            {
+                mainMenu = {
+                    ...mainMenu,
+                    'AUTENTICACION': {
+                        ...mainMenu.AUTENTICACION,
+                        [item.name]: true
+                    }
+                }
+            }
+
+            // DEFINICIONES
+            if(definitionsArray.includes(item.name))
+            {
+                mainMenu = {
+                    ...mainMenu,
+                    'DEFINICIONES': {
+                        ...mainMenu.DEFINICIONES,
+                        [item.name]: true
+                    }
+                }
+            }
+        })
+
+        return {
+            mainMenu
+        }
+    },
     components:{
         Link,
     },

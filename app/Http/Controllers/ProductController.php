@@ -16,6 +16,11 @@ use Inertia\Inertia;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:products.index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,9 +40,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $this->middleware('permission:products.create');
         $packages = $this->getTypePackages();
         $categories = $this->getCategories();
-        
+
         return Inertia::render('Products/Create', compact('packages', 'categories'));
     }
 
@@ -49,6 +55,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        $this->middleware('permission:products.create');
         DB::transaction(function () use ($request) {
             $product = Product::create([
                 'name' => $request->name,
@@ -59,9 +66,9 @@ class ProductController extends Controller
             foreach($request->packages as $key => $package)
             {
                 PackageProduct::create([
-                    'product_id' => $product->id, 
-                    'package_id' => $package, 
-                    'quantity_people' => $request->quatity[$key], 
+                    'product_id' => $product->id,
+                    'package_id' => $package,
+                    'quantity_people' => $request->quatity[$key],
                     'cost' => $request->costs[$key]
                 ]);
             }
@@ -95,6 +102,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $this->middleware('permission:products.edit');
         $packages = $this->getTypePackages();
         $categories = $this->getCategories();
         $statuses = Status::where('data_model', 'App\Models\Product')->get();
@@ -112,6 +120,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        $this->middleware('permission:products.edit');
         DB::transaction(function () use ($request, $product) {
             $product->update([
                 'name' => $request->name,
@@ -124,9 +133,9 @@ class ProductController extends Controller
             foreach($request->packages as $key => $package)
             {
                 PackageProduct::create([
-                    'product_id' => $product->id, 
-                    'package_id' => $package, 
-                    'quantity_people' => $request->quatity[$key], 
+                    'product_id' => $product->id,
+                    'package_id' => $package,
+                    'quantity_people' => $request->quatity[$key],
                     'cost' => $request->costs[$key]
                 ]);
             }

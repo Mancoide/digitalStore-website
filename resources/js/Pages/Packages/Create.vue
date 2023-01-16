@@ -11,6 +11,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <v-btn
+                                    :disabled="form.processing"
                                     type="submit"
                                     rounded="lg"
                                     color="success"
@@ -52,7 +53,7 @@
                 name: null,
                 cost: null
             });
-            
+
             return { form }
         },
     }

@@ -33,6 +33,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::resource('packages', \App\Http\Controllers\PackageController::class);
 	Route::resource('products', \App\Http\Controllers\ProductController::class);
 
+    Route::resource('purchases', \App\Http\Controllers\PurchaseController::class);
+
 });
 
 Route::middleware(['guest'])->group(function () {

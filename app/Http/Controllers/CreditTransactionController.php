@@ -12,6 +12,11 @@ use Inertia\Inertia;
 
 class CreditTransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:transacctions.index');
+    }
+
     public function index()
     {
     	$transactions = Transaction::with('user', 'created_by')->orderBy('id', 'DESC')->paginate(30);
@@ -21,12 +26,15 @@ class CreditTransactionController extends Controller
 
     public function create()
     {
+        $this->middleware('permission:transacctions.create');
         $users = User::where('status_id',1)->get();
     	return Inertia::render('Transactions/Create', compact('users'));
     }
 
     public function store(CreateCreditRequest $request)
     {
+        $this->middleware('permission:transacctions.create');
+
         DB::transaction(function () use ($request)
         {
             $typeTransaction = 'Credito';

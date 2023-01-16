@@ -5,12 +5,13 @@
 				<h5>Editar Rol</h5>
 			</v-row>
 			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.put('/roles/'+rol.id)">
+                <form @submit.prevent="form.put('/roles/'+role.id)">
                     <FormVue :permissions="permissions" :formData="form" :definitions="definitions" />
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
                                 <v-btn
+                                    :disabled="form.processing"
                                     type="submit"
                                     rounded="lg"
                                     color="success"
@@ -60,6 +61,7 @@
                     actualPermissions.push(permission.id);
                 })
             }
+
             const form = useForm({
                 permissions: actualPermissions,
                 name: props.role.display_name ?? '',

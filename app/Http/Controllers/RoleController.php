@@ -11,6 +11,11 @@ use Inertia\Inertia;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:roles.index');
+    }
+
     public function index()
     {
         $roles = Role::orderBy('name', 'ASC');
@@ -26,6 +31,7 @@ class RoleController extends Controller
 
     public function create()
     {
+        $this->middleware('permission:roles.create');
         $permissions = $this->getPermissions();
         $definitions = config('constants.definitions');
         return Inertia::render('Roles/Create', compact('permissions', 'definitions'));
@@ -33,6 +39,7 @@ class RoleController extends Controller
 
     public function store(CreateRoleRequest $request)
     {
+        $this->middleware('permission:roles.create');
         $role = Role::create([
             'display_name'  => $request->name,
             'description'   => $request->description,
@@ -49,6 +56,7 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
+        $this->middleware('permission:roles.edit');
         $permissions = $this->getPermissions();
         $role->load(['permissions']);
         $definitions = config('constants.definitions');
@@ -58,6 +66,7 @@ class RoleController extends Controller
 
     public function update(Role $role, CreateRoleRequest $request)
     {
+        $this->middleware('permission:roles.edit');
         $role->update([
             'name' => str_replace(' ', '-', $request->name),
             'display_name' => $request->name,

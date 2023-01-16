@@ -21,15 +21,15 @@
         ],
 
         'definitions' => [
-            'Usuarios',
-            'Roles',
-            'Clientes',
-            'Monedas',
-            'Productos',
-            'Planes',
-            'Saldos',
-            'Cuentas',
-            'Categorias',
+            1 => 'Usuarios',
+            2 => 'Roles',
+            3 => 'Clientes',
+            4 => 'Monedas',
+            5 => 'Productos',
+            6 => 'Planes',
+            7 => 'Saldos',
+            8 => 'Cuentas',
+            9 => 'Categorias',
         ]
 	];
 ?>

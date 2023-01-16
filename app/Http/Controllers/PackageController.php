@@ -12,6 +12,11 @@ use Inertia\Inertia;
 
 class PackageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:packages.index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,6 +36,7 @@ class PackageController extends Controller
      */
     public function create()
     {
+        $this->middleware('permission:packages.create');
         return Inertia::render('Packages/Create');
     }
 
@@ -42,6 +48,7 @@ class PackageController extends Controller
      */
     public function store(CreatePackageRequest $request)
     {
+        $this->middleware('permission:packages.create');
         Package::create([
             'name' => $request->name,
             'cost' => $request->cost
@@ -72,9 +79,10 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
+        $this->middleware('permission:packages.edit');
         $statuses = Status::where('data_model', 'App\Models\Package')->get();
         $packageInfo = $package;
-        
+
     	return Inertia::render('Packages/Edit', compact('packageInfo', 'statuses'));
     }
 
@@ -87,6 +95,7 @@ class PackageController extends Controller
      */
     public function update(EditPackageRequest $request, Package $package)
     {
+        $this->middleware('permission:packages.edit');
         $package->update([
             'name' => $request->name,
             'cost' => $request->cost,

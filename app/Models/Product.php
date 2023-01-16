@@ -44,6 +44,16 @@ class Product extends Model implements HasMedia
         return $this->belongsToMany(Package::class, 'package_product', 'product_id', 'package_id')->withPivot('cost', 'quantity_people');
     }
 
+    /**
+     * Get the accounts that owns the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
     public function scopeActive($query)
     {
         return $query->where('status_id', 9);

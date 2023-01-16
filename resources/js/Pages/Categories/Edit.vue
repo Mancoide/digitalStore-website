@@ -11,6 +11,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <v-btn
+                                    :disabled="form.processing"
                                     type="submit"
                                     rounded="lg"
                                     color="success"
@@ -29,7 +30,7 @@
                                             Cancelar
                                     </v-btn>
                                 </Link>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -57,7 +58,7 @@
                 name: props.category?.name ?? null,
                 status_id: props.category?.status_id ?? null
             });
-            
+
             return { form }
         }
     }

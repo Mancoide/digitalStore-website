@@ -11,6 +11,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <v-btn
+                                    :disabled="form.processing"
                                     type="submit"
                                     rounded="lg"
                                     color="success"
@@ -51,7 +52,7 @@
             const form = useForm({
                 name: null,
             });
-            
+
             return { form }
         },
     }

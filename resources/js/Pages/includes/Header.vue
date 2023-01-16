@@ -22,15 +22,15 @@
                 <v-list dense>
                     <v-list-item-group v-model="selectedItem" color="primary" >
                         <v-list-item>
-                            <v-btn color="black" dark href="/">
+                            <v-btn color="black" dark href="/password">
                                 <v-icon>mdi-key-change</v-icon>
                                 <span color="white">Contraseña</span>
                             </v-btn>
                         </v-list-item>
                         <v-list-item>
-                            <v-btn color="black" dark href="/logout">
-                                <v-icon>mdi-logout-variant</v-icon>
-                                <span color="white">Cerrar</span>
+                            <v-btn class="w-100 justify-content-start" color="black" dark href="/logout">
+                                <v-icon>mdi-logout-variant</v-icon> &nbsp;
+                                <span color="white">Salir</span>
                             </v-btn>
                         </v-list-item>
                     </v-list-item-group>

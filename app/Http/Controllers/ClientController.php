@@ -10,6 +10,11 @@ use Inertia\Inertia;
 
 class ClientController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:clients.index');
+    }
+
     public function index()
     {
         if(auth()->user()->id == 1){
@@ -23,11 +28,13 @@ class ClientController extends Controller
 
     public function create()
     {
+        $this->middleware('permission:clients.create');
     	return Inertia::render('Clients/Create');
     }
 
     public function store(CreateClientRequest $request)
     {
+        $this->middleware('permission:clients.create');
     	$client = Client::create([
             'fullname'          => $request->fullname,
             'phone'             => $request->phone,
@@ -46,11 +53,13 @@ class ClientController extends Controller
 
     public function edit(Client $client)
     {
+        $this->middleware('permission:clients.edit');
         return Inertia::render('Clients/Edit', compact('client'));
     }
 
     public function update(Client $client, CreateClientRequest $request)
     {
+        $this->middleware('permission:clients.edit');
         $client->update([
             'fullname'          => $request->fullname,
             'phone'             => $request->phone,

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->longText('description');
             $table->foreignId('status_id')->default(13);
             $table->foreignId('createdBy')->constrained('users', 'id');
+            $table->foreignId('seller_id')->nullable()->constrained('users', 'id');
             $table->foreignId('deletedBy')->nullable()->constrained('users', 'id');
             $table->longText('motive')->nullable();
             $table->timestamps();

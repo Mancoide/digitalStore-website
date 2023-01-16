@@ -5,7 +5,7 @@
             <Header/>
             <v-main>
                 <v-content>
-                    <!-- <NotificationBoxVue /> -->
+                    <NotificationBoxVue />
                     <slot />
                 </v-content>
             </v-main>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core';
     import Header from './Header.vue';
     import Menu from './Menu.vue';
     import NotificationBoxVue from '../shared/NotificationBox.vue';
@@ -22,7 +23,7 @@
         components: {
             Header,
             Menu,
-            // NotificationBoxVue
-        }
+            NotificationBoxVue
+        },
     }
 </script>

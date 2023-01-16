@@ -12,6 +12,11 @@ use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:category.index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,6 +37,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $this->middleware('permission:category.create');
+
         return Inertia::render('Categories/Create');
     }
 
@@ -43,11 +50,12 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
+        $this->middleware('permission:category.create');
         Category::create([
             'name' => $request->name,
             'status_id' => 5
         ]);
-        
+
         return Redirect::route('categories.index')->with('notification', [
             'status' => 'success',
             'message'=> 'Guardado Exitosamente',
@@ -73,6 +81,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $this->middleware('permission:category.editar');
+
         $statuses = Status::where('data_model', 'App\Models\Category')->get();
 
     	return Inertia::render('Categories/Edit', compact('category', 'statuses'));
@@ -87,6 +97,8 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
+        $this->middleware('permission:category.editar');
+
         $category->update([
             'name'  => $request->name,
             'status_id' => $request->status_id

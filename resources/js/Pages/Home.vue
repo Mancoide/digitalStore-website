@@ -4,22 +4,21 @@
             <h5>Poductos</h5>
         </v-row>
         <v-divider></v-divider>
-        <v-row justify="space-around">
+        <v-row>
             <v-col
                 v-for="product in products"
                 cols="12"
-                md="4"
+                md="2"
                 :key="product.id"
             >
-
                 <!-- {{ account }} -->
                 <v-sheet
                     rounded
-                    class="mx-auto"
-                    height="100"
-                    width="100"
+                    class="mx-auto p-0 m-0"
+                    height="100%"
+                    width="100%"
                 >
-                    <v-card @click="updateModalContent(true, product)">
+                    <v-card @click="updateModalContent(true, product)" class="w-100">
                         <v-img
                             :src="product.media[0].original_url"
                             :lazy-src="product.media[0].original_url"
@@ -27,7 +26,7 @@
                             cover
                             class="bg-white rounded"
                         ></v-img>
-                        <v-card-text class="text-center fw-bold">
+                        <v-card-text class="text-center fw-bold w-100">
                             {{ product.name }}
                         </v-card-text>
                     </v-card>
@@ -41,7 +40,7 @@
       persistent
     >
         <v-card v-if="dialog">
-            <form @submit.prevent="form.post('/buy')">
+            <form @submit.prevent="submit">
                 <v-card-title>
                     <span class="text-h5">Comprar Cuenta de {{ modalData.name }}</span>
                 </v-card-title>
@@ -139,7 +138,6 @@
 <script>
 
 import { useForm } from '@inertiajs/inertia-vue3';
-import { Inertia } from '@inertiajs/inertia';
 
 export default {
     data: () => ({
@@ -156,6 +154,17 @@ export default {
             this.modalData = modalData;
 
             this.form.product_id = modalData.id;
+        },
+        submit() {
+            this.form.post('/buy',{
+                onSuccess: (response) => {
+                    if(response.props.flash.notification?.status === 'success')
+                    {
+                        this.dialog = false
+                        this.modalData = null
+                    }
+                }
+            });
         }
     },
     setup (props) {
