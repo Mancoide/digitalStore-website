@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
                 'notification' => fn () => $request->session()->get('notification')
             ],
             'auth' => Auth::user(),
-            'authUserPermissions' => Auth::user()->roles[0]->permissions
+            'authUserPermissions' => Auth::user() ? Auth::user()->roles[0]->permissions : null
         ]);
     }
 }
