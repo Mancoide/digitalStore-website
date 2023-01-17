@@ -13,8 +13,11 @@ import * as directives from 'vuetify/directives'
 //Swal2
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-// //Mask
+//Mask
 // import * as VueInputMask from 'vue-inputmask';
+
+//CSS
+import '../css/app.css';
 
 const vuetify = createVuetify({
   	components,
