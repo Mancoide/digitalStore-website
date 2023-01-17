@@ -208,6 +208,36 @@ class PermissionsSeeder extends Seeder
                     'created_at'   => date('Y-m-d H:i:s'),
                     'updated_at'   => date('Y-m-d H:i:s'),
                 ],
+
+                [
+                    'name'         => 'banners.index',
+                    'display_name' => 'Ver Banners',
+                    'description'  => 10,
+                    'created_at'   => date('Y-m-d H:i:s'),
+                    'updated_at'   => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'name'         => 'banners.create',
+                    'display_name' => 'Crear Banners',
+                    'description'  => 10,
+                    'created_at'   => date('Y-m-d H:i:s'),
+                    'updated_at'   => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'name'         => 'banners.editar',
+                    'display_name' => 'Editar Banners',
+                    'description'  => 10,
+                    'created_at'   => date('Y-m-d H:i:s'),
+                    'updated_at'   => date('Y-m-d H:i:s'),
+                ],
+
+                [
+                    'name'         => 'banners.delete',
+                    'display_name' => 'Eliminar Banners',
+                    'description'  => 10,
+                    'created_at'   => date('Y-m-d H:i:s'),
+                    'updated_at'   => date('Y-m-d H:i:s'),
+                ],
             ]);
 
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');

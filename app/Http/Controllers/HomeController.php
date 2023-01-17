@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Banner;
 use App\Models\Movement;
 use App\Models\PackageProduct;
 use App\Models\Product;
@@ -28,8 +29,11 @@ class HomeController extends Controller
             })
             ->active()
             ->get();
+        $banners = Banner::with(['media'])->orderBy('order')
+            ->where('section', 1)
+            ->get();
 
-        return Inertia::render('Home', compact('products'));
+        return Inertia::render('Home', compact('products', 'banners'));
     }
 
     public function buyAccounts(Request $request)

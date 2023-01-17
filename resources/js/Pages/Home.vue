@@ -1,5 +1,21 @@
 <template>
     <v-container>
+        <v-row class="mb-5" v-if="banners && banners.length > 0">
+            <v-carousel
+                cycle
+                height="400"
+                hide-delimiter-background
+                color="#fff"
+            >
+                <v-carousel-item
+                    v-for="(banner, bannerIndex) in banners"
+                    :key="bannerIndex"
+                    :src="banner.media[0].original_url"
+                    cover
+                >
+                </v-carousel-item>
+            </v-carousel>
+        </v-row>
         <v-row justify="space-between pa-4 mb-2">
             <h5>Poductos</h5>
         </v-row>
@@ -145,7 +161,8 @@ export default {
       modalData: null
     }),
     props:{
-        products: Object
+        products: Object,
+        banners: Object
     },
     methods: {
         updateModalContent(showDialog, modalData = null)

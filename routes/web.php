@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resource('purchases', \App\Http\Controllers\PurchaseController::class);
 
+    Route::resource('banners', \App\Http\Controllers\BannerController::class);
+
 });
 
 Route::middleware(['guest'])->group(function () {

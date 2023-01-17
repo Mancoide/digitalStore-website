@@ -1,7 +1,7 @@
 <template>
     <v-card-text>
         <v-row class="mb-3">
-            <v-col class="col-md-4">
+            <v-col cols="12" md="4">
                 <v-text-field
                     :error-messages="formData.errors.name"
                     v-model="formData.name"
@@ -9,7 +9,7 @@
                     label="Nombre"
                 />
             </v-col>
-            <v-col class="col-md-8">
+            <v-col cols="12" md="8">
                 <v-text-field
                     :error-messages="formData.errors.description"
                     v-model="formData.description"
@@ -19,7 +19,7 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col class="col-md-6" v-for="(permissionArrays, permissionTitle) in permissions" :key="permissionTitle">
+            <v-col cols="12" md="6" v-for="(permissionArrays, permissionTitle) in permissions" :key="permissionTitle">
                 <v-card :title="definitions[permissionTitle]">
                     <v-divider />
                     <template v-for="permission in permissionArrays" :key="permission.id">

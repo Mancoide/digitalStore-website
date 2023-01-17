@@ -30,6 +30,10 @@
             7 => 'Saldos',
             8 => 'Cuentas',
             9 => 'Categorias',
+        ],
+
+        'banner-sections' => [
+            ['id' => 1, 'section' => 'Comprar']
         ]
 	];
 ?>
