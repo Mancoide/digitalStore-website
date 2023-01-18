@@ -16,14 +16,11 @@
 		<!-- Custom stylesheet - for your changes-->
 		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
-		{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" /> --}}
-		{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" /> --}}
 		@inertiaHead
 	</head>
 	<body>
 		@inertia
 		@vite('resources/js/app.js')
-		{{-- @vite('resources/css/app.css') --}}
 
         <script type="text/javascript">
             @if($errors->any())
