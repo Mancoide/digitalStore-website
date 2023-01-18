@@ -30,7 +30,7 @@
             7 => 'Saldos',
             8 => 'Cuentas',
             9 => 'Categorias',
-            9 => 'Banners',
+            10 => 'Banners',
         ],
 
         'banner-sections' => [
