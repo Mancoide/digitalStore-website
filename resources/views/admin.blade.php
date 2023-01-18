@@ -23,7 +23,7 @@
 	<body>
 		@inertia
 		@vite('resources/js/app.js')
-		@vite('resources/css/app.css')
+		{{-- @vite('resources/css/app.css') --}}
 
         <script type="text/javascript">
             @if($errors->any())
