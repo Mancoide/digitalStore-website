@@ -34,7 +34,7 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli pdo_pgsql pgsql mbstring exif pc
 # COPY ./docker-compose/supervisor/horizon.conf /etc/supervisor/conf.d/horizon.conf
 
 # Copy start entrypoint
-COPY ./docker-compose/start.sh /usr/local/bin/start
+# COPY ./docker-compose/start.sh /usr/local/bin/start
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
