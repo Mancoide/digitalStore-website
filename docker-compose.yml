@@ -1,78 +1,46 @@
 version: "3.3"
 
-volumes:
-    letsencrypt:
-    nextcloud:
-
 services:
-  proxy:
-    image: staticfloat/nginx-certbot
-    ports:
-        - 80:80
-        - 443:443
-    environment:
-        CERTBOT_EMAIL: adrianhenrygo13@gmail.com
-        ENVSUBST_VARS: FQDN
-        FQDN: nextcloud.51sec.org
-    volumes:
-        - ./conf.d:/etc/nginx/user.conf.d:ro
-        - letsencrypt:/etc/letsencrypt
-        - nextcloud:/home/ubuntu/digitalStore-website
-    restart: unless-stopped
   app:
     build:
       args:
-        user: "hgonzalez"
-        uid: "1001"
-        ugroup: "1001"
-        gid: "1001"
+        user: "${DOCKER_USER}"
+        uid: "${DOCKER_UID}"
+        ugroup: "${DOCKER_GROUP}"
+        gid: "${DOCKER_GID}"
       context: ./
       dockerfile: Dockerfile
-    image: digital-store-website
-    container_name: digital-store-website
+    image: digitalstore-app
+    container_name: digitalstore-app
+    hostname: digitalstore-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
     networks:
-      - digitalstoreepy.com
+      - digitalstore
+      - nginx-certbot_server-nginx
     environment:
       CONTAINER_ROLE: "${CONTAINER_ROLE}"
       APP_ENV: "${APP_ENV}"
-      DOCKER_USER: "hgonzalez"
-  cron:
-    image: rcdailey/nextcloud-cronjob
-    environment:
-        - NEXTCLOUD_CRON_MINUTE_INTERVAL=15
-        - NEXTCLOUD_CONTAINER_NAME=app
-        - NEXTCLOUD_PROJECT_NAME=nextcloud
-    volumes:
-        - /var/run/docker.sock:/var/run/docker.sock:ro
-        - /etc/localtime:/etc/localtime:ro
-    restart: always
+      DOCKER_USER: "${DOCKER_USER}"
+
   nginx:
     image: nginx:alpine
-    container_name: digitalstoreepy.com-nginx
+    container_name: digitalstore-nginx
+    hostname: digitalstore-nginx
     restart: unless-stopped
     ports:
-      - 80:80
-      - 443:443
+      - "${DOCKER_HOST_PORT}:${DOCKER_CONTAINER_PORT}"
     volumes:
       - ./:/var/www
-      - ./docker-compose/nginx:/etc/nginx/conf.d
+      - ./docker-compose/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker-compose/nginx/conf.d:/etc/nginx/conf.d
     networks:
-      - digitalstoreepy.com
-  node:
-    image: node:18.13
-    container_name: digitalstoreepy.com-node
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-
-volumes:
-  redis:
-    driver: "local"
-
+      - digitalstore
+      - nginx-certbot_server-nginx
 networks:
-  digitalstoreepy.com:
+  digitalstore:
     driver: bridge
+  nginx-certbot_server-nginx:
+    external: true
