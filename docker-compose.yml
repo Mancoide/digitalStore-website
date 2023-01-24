@@ -1,0 +1,120 @@
+version: "3.3"
+
+services:
+  app:
+    build:
+      args:
+        user: "${DOCKER_USER}"
+        uid: "${DOCKER_UID}"
+        ugroup: "${DOCKER_GROUP}"
+        gid: "${DOCKER_GID}"
+      context: ./
+      dockerfile: Dockerfile
+    image: dls-puntofarma-app
+    container_name: dls-puntofarma-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    depends_on:
+      - redis
+      - pgdb
+    volumes:
+      - ./:/var/www
+    networks:
+      - dls-puntofarma
+    environment:
+      CONTAINER_ROLE: "${CONTAINER_ROLE}"
+      APP_ENV: "${APP_ENV}"
+      DOCKER_USER: "${DOCKER_USER}"
+
+  scheduler:
+    image: dls-puntofarma-app
+    container_name: dls-puntofarma-scheduler
+    depends_on:
+      - app
+    volumes:
+      - .:/var/www
+    networks:
+      - dls-puntofarma
+    environment:
+      CONTAINER_ROLE: scheduler
+      APP_ENV: "${APP_ENV}"
+      DOCKER_USER: "${DOCKER_USER}"
+
+  queue:
+    image: dls-puntofarma-app
+    container_name: dls-puntofarma-queue
+    depends_on:
+      - app
+    volumes:
+      - ./:/var/www
+    networks:
+      - dls-puntofarma
+    environment:
+      CONTAINER_ROLE: queue
+      APP_ENV: "${APP_ENV}"
+      DOCKER_USER: "${DOCKER_USER}"
+
+  pgdb:
+    image: postgres
+    restart: always
+    container_name: dls-puntofarma-pgdb
+    hostname: dls-puntofarma-pgdb
+    environment:
+      POSTGRES_PASSWORD: iLovebacon123
+      POSTGRES_USER: dls
+      POSTGRES_DB: pfarma
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    networks:
+      - dls-puntofarma
+
+  db:
+    image: mysql
+    container_name: dls-puntofarma-db
+    hostname: dls-puntofarma-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: iLovebacon123@
+      MYSQL_PASSWORD: iLovebacon123@
+      MYSQL_USER: dls
+      MYSQL_DATABASE: pfarma
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - dls-puntofarma
+
+  nginx:
+    image: nginx:alpine
+    container_name: dls-puntofarma-nginx
+    restart: unless-stopped
+    ports:
+      - "${DOCKER_HOST_PORT}:${DOCKER_CONTAINER_PORT}"
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - dls-puntofarma
+
+  redis:
+    container_name: dls-puntofarma-redis
+    hostname: dls-puntofarma-redis
+    image: redis:alpine
+    ports:
+      - "${DOCKER_HOST_REDIS_PORT}:${DOCKER_CONTAINER_REDIS_PORT}"
+    volumes:
+      - redis:/data
+    networks:
+      - dls-puntofarma
+
+volumes:
+  redis:
+    driver: "local"
+
+networks:
+  dls-puntofarma:
+    driver: bridge
