@@ -4,10 +4,10 @@ services:
   app:
     build:
       args:
-        user: "${DOCKER_USER}"
-        uid: "${DOCKER_UID}"
-        ugroup: "${DOCKER_GROUP}"
-        gid: "${DOCKER_GID}"
+        user: "root"
+        uid: "root"
+        ugroup: "root"
+        gid: "root"
       context: ./
       dockerfile: Dockerfile
     image: digital-store-website
@@ -21,7 +21,7 @@ services:
     environment:
       CONTAINER_ROLE: "${CONTAINER_ROLE}"
       APP_ENV: "${APP_ENV}"
-      DOCKER_USER: "${DOCKER_USER}"
+      DOCKER_USER: "root"
   nginx:
     image: nginx:alpine
     container_name: digitalstoreepy.com-nginx
