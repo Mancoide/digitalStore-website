@@ -80,6 +80,6 @@ RUN chown -R www-data:www-data /var/www && \
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # Copy custom php ini configs
-COPY ./docker-compose/php/custom.ini "$PHP_INI_DIR/conf.d/custom.ini"
+# COPY ./docker-compose/php/custom.ini "$PHP_INI_DIR/conf.d/custom.ini"
 
 # CMD ["/usr/local/bin/start"]
