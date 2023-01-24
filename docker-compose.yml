@@ -10,8 +10,8 @@ services:
         gid: "${DOCKER_GID}"
       context: ./
       dockerfile: Dockerfile
-    image: digitalStore-website
-    container_name: digitalStore-website
+    image: digital-store-website
+    container_name: digital-store-website
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
