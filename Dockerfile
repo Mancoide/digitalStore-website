@@ -53,8 +53,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN usermod -u $uid www-data
 
-RUN chown -R www-data:www-data /usr/local/bin/start && \
-    chmod u+x /usr/local/bin/start
+# RUN chown -R www-data:www-data /usr/local/bin/start && \
+    # chmod u+x /usr/local/bin/start
 
 # Set working directory
 WORKDIR /var/www
@@ -64,5 +64,5 @@ COPY . /var/www
 RUN chown -R www-data:www-data /var/www && \
     chmod 775 /var/www/storage
 
-CMD ["/usr/local/bin/start"]
+# CMD ["/usr/local/bin/start"]
 
