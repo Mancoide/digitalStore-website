@@ -1,0 +1,7 @@
+.vscode
+.idea
+_ide_helper
+.phpstorm.meta.php
+node_modules
+vendor
+data
