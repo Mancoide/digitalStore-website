@@ -33,6 +33,13 @@ services:
       - ./docker-compose/nginx:/etc/nginx/conf.d
     networks:
       - digitalstoreepy.com
+  node:
+    image: node:18.13
+    container_name: digitalstoreepy.com-node
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+
 volumes:
   redis:
     driver: "local"
