@@ -1,5 +1,9 @@
 version: "3.3"
 
+volumes:
+    letsencrypt:
+    nextcloud:
+
 services:
   proxy:
     image: staticfloat/nginx-certbot
