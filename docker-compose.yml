@@ -14,8 +14,6 @@ services:
     container_name: digitalStore-website
     restart: unless-stopped
     working_dir: /var/www/
-    depends_on:
-      - mysql
     volumes:
       - ./:/var/www
     networks:
