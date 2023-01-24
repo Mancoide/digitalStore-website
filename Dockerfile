@@ -31,7 +31,7 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
 RUN docker-php-ext-install pdo pdo_mysql mysqli pdo_pgsql pgsql mbstring exif pcntl bcmath gd zip
 
 # Copy supervisor conf
-COPY ./docker-compose/supervisor/horizon.conf /etc/supervisor/conf.d/horizon.conf
+# COPY ./docker-compose/supervisor/horizon.conf /etc/supervisor/conf.d/horizon.conf
 
 # Copy start entrypoint
 COPY ./docker-compose/start.sh /usr/local/bin/start
