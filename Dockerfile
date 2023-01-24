@@ -45,7 +45,7 @@ RUN pecl install -o -f redis \
 # COPY ./docker-compose/supervisor/horizon.conf /etc/supervisor/conf.d/horizon.conf
 
 # Copy start entrypoint
-COPY ./docker-compose/start.sh /usr/local/bin/start
+# COPY ./docker-compose/start.sh /usr/local/bin/start
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -65,8 +65,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN usermod -u $uid www-data
 RUN groupmod -g $gid www-data
 
-RUN chown -R www-data:www-data /usr/local/bin/start && \
-    chmod u+x /usr/local/bin/start
+# RUN chown -R www-data:www-data /usr/local/bin/start && \
+    # chmod u+x /usr/local/bin/start
 
 # Set working directory
 WORKDIR /var/www
@@ -82,4 +82,4 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 # Copy custom php ini configs
 COPY ./docker-compose/php/custom.ini "$PHP_INI_DIR/conf.d/custom.ini"
 
-CMD ["/usr/local/bin/start"]
+# CMD ["/usr/local/bin/start"]
