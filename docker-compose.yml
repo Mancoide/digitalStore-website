@@ -1,6 +1,20 @@
 version: "3.3"
 
 services:
+  proxy:
+    image: staticfloat/nginx-certbot
+    ports:
+        - 80:80
+        - 443:443
+    environment:
+        CERTBOT_EMAIL: adrianhenrygo13@gmail.com
+        ENVSUBST_VARS: FQDN
+        FQDN: nextcloud.51sec.org
+    volumes:
+        - ./conf.d:/etc/nginx/user.conf.d:ro
+        - letsencrypt:/etc/letsencrypt
+        - nextcloud:/home/ubuntu/digitalStore-website
+    restart: unless-stopped
   app:
     build:
       args:
@@ -22,12 +36,23 @@ services:
       CONTAINER_ROLE: "${CONTAINER_ROLE}"
       APP_ENV: "${APP_ENV}"
       DOCKER_USER: "hgonzalez"
+  cron:
+    image: rcdailey/nextcloud-cronjob
+    environment:
+        - NEXTCLOUD_CRON_MINUTE_INTERVAL=15
+        - NEXTCLOUD_CONTAINER_NAME=app
+        - NEXTCLOUD_PROJECT_NAME=nextcloud
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+        - /etc/localtime:/etc/localtime:ro
+    restart: always
   nginx:
     image: nginx:alpine
     container_name: digitalstoreepy.com-nginx
     restart: unless-stopped
     ports:
-      - "80:8080"
+      - 80:80
+      - 443:443
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d
