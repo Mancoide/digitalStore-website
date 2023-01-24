@@ -42,7 +42,7 @@ RUN pecl install -o -f redis \
           &&  docker-php-ext-enable redis
 
 # Copy supervisor conf
-COPY ./docker-compose/supervisor/horizon.conf /etc/supervisor/conf.d/horizon.conf
+# COPY ./docker-compose/supervisor/horizon.conf /etc/supervisor/conf.d/horizon.conf
 
 # Copy start entrypoint
 COPY ./docker-compose/start.sh /usr/local/bin/start
