@@ -24,23 +24,45 @@ services:
       CONTAINER_ROLE: "${CONTAINER_ROLE}"
       APP_ENV: "${APP_ENV}"
       DOCKER_USER: "${DOCKER_USER}"
-
   nginx:
-    image: nginx:alpine
-    container_name: digitalstore-nginx
-    hostname: digitalstore-nginx
+    image: jonasal/nginx-certbot:latest
+    container_name: nginx-certbot
     restart: unless-stopped
+    environment:
+      - CERTBOT_EMAIL=adrianhenrygo13@gmail.com
+    env_file:
+      - ./nginx-certbot.env
     ports:
-      - "${DOCKER_HOST_PORT}:${DOCKER_CONTAINER_PORT}"
+      - 80:80
+      - 443:443
     volumes:
-      - ./:/var/www
-      - ./docker-compose/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./docker-compose/nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx-resources:/etc/nginx/resources
+      - ./user_conf.d:/etc/nginx/user_conf.d
+      - ./nginx-conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-conf/security-limits.conf:/etc/security/limits.d/nginx.conf
     networks:
-      - digitalstore
-      - nginx-certbot_server-nginx
-networks:
-  digitalstore:
-    driver: bridge
-  nginx-certbot_server-nginx:
-    external: true
+      - server-nginx
+  networks:
+    digitalstore:
+        driver: bridge
+    server-nginx:
+
+#   nginx:
+#     image: nginx:alpine
+#     container_name: digitalstore-nginx
+#     hostname: digitalstore-nginx
+#     restart: unless-stopped
+#     ports:
+#       - "${DOCKER_HOST_PORT}:${DOCKER_CONTAINER_PORT}"
+#     volumes:
+#       - ./:/var/www
+#       - ./docker-compose/nginx/nginx.conf:/etc/nginx/nginx.conf
+#       - ./docker-compose/nginx/conf.d:/etc/nginx/conf.d
+#     networks:
+#       - digitalstore
+#       - nginx-certbot_server-nginx
+# networks:
+#   digitalstore:
+#     driver: bridge
+#   nginx-certbot_server-nginx:
+#     external: true
