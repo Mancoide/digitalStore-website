@@ -69,12 +69,12 @@ RUN chown -R www-data:www-data /usr/local/bin/start && \
     chmod u+x /usr/local/bin/start
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/digitalStore-website
 
 # Copy project
-COPY . /var/www
-RUN chown -R www-data:www-data /var/www && \
-    chmod 775 /var/www/storage
+COPY . /var/www/digitalStore-website
+RUN chown -R www-data:www-data /var/www/digitalStore-website && \
+    chmod 775 /var/www/digitalStore-website/storage
 
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
