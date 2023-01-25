@@ -38,8 +38,6 @@ services:
       - nginx_secrets:/etc/letsencrypt
       - ./nginx-resources:/etc/nginx/resources
       - ./user_conf.d:/etc/nginx/user_conf.d
-      - ./nginx-conf/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx-conf/security-limits.conf:/etc/security/limits.d/nginx.conf
     networks:
       - digitalstore
       - server-nginx
