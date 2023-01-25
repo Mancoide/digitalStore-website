@@ -19,7 +19,7 @@ services:
       - ./:/var/www
     networks:
       - digitalstore
-      - nginx-certbot_server-nginx
+    #   - nginx-certbot_server-nginx
     environment:
       CONTAINER_ROLE: "${CONTAINER_ROLE}"
       APP_ENV: "${APP_ENV}"
