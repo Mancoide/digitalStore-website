@@ -36,6 +36,7 @@ services:
       - 443:443
     volumes:
       - nginx_secrets:/etc/letsencrypt
+      - ./:/var/www
       - ./nginx-resources:/etc/nginx/resources
       - ./user_conf.d:/etc/nginx/user_conf.d
     networks:
