@@ -19,7 +19,6 @@ services:
       - ./:/var/www
     networks:
       - digitalstore
-    #   - nginx-certbot_server-nginx
     environment:
       CONTAINER_ROLE: "${CONTAINER_ROLE}"
       APP_ENV: "${APP_ENV}"
@@ -46,6 +45,7 @@ services:
     digitalstore:
         driver: bridge
     server-nginx:
+        driver: bridge
 
 #   nginx:
 #     image: nginx:alpine
