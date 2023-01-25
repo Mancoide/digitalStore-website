@@ -35,7 +35,7 @@ services:
       - "${DOCKER_HOST_PORT}:${DOCKER_CONTAINER_PORT}"
       - 443:443
     volumes:
-      - ./:/var/www/digitalStore-website
+      # - ./:/var/www/digitalStore-website
       - nginx_secrets:/etc/letsencrypt
       - ./nginx-resources:/etc/nginx/resources
       - ./user_conf.d:/etc/nginx/user_conf.d
