@@ -43,6 +43,8 @@ services:
     networks:
       - digitalstore
       - server-nginx
+volumes:
+  nginx_secrets:
 networks:
   digitalstore:
     driver: bridge
