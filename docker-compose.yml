@@ -32,7 +32,7 @@ services:
     env_file:
       - ./nginx-certbot.env
     ports:
-      - 80:80
+      - "${DOCKER_HOST_PORT}:${DOCKER_CONTAINER_PORT}"
       - 443:443
     volumes:
       - ./nginx-resources:/etc/nginx/resources
