@@ -4,10 +4,10 @@
             <v-row justify="space-between pa-4 mb-2">
 				<h5>Cambiar Contraseña</h5>
 			</v-row>
-			<v-card class="p-0 m-0">
-                <form @submit.prevent="form.post('/Password')">
+			<v-card class="p-0 m-0 col-lg-4 col-sm-12">
+                <form @submit.prevent="form.put('/Password/'+user.id)">
                     <div class="row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-lg-8">
                             <v-text-field
                                 :error-messages="form.errors.password"
                                 v-model="form.password"
@@ -16,7 +16,9 @@
                                 label="Contraseña"
                             />
                         </div>
-                        <div class="form-group col-md-4">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-8">
                             <v-text-field
                                 :error-messages="form.errors.ConfirmPassword"
                                 v-model="form.ConfirmPassword"
@@ -26,9 +28,11 @@
                             />
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="row">
+                    <!-- </div>
+                    <div class="card-footer"> -->
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-4">
                                 <v-btn
                                     type="submit"
                                     rounded="lg"
@@ -38,7 +42,7 @@
                                     Guardar
                                 </v-btn>
                             </div>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <Link href="/" as="button" class="w-100">
                                     <v-btn
                                         rounded="lg"
@@ -70,7 +74,7 @@
         },
         setup (props) {
             const form = useForm({
-                id: props.user.id ?? null,
+                id: props.user.id,
                 password: null
             });
 
