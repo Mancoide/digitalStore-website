@@ -10,7 +10,7 @@ use Inertia\Inertia;
 
 class ChangePasswordController extends Controller
 {
-    public function index()
+    /*public function index()
     {
         $user = User::find(auth()->user()->id);
         return Inertia::render('Password/Changue',compact('user'));
@@ -19,7 +19,7 @@ class ChangePasswordController extends Controller
     public function update(User $user, ChangePasswordRequest $request)
     {
         if($request->password == $request->ConfirmPassword){
-            //$user = User::find(auth()->user()->id);
+            $user = User::find(auth()->user()->id);
 
             $user->update([
                 'password' => $request->password
@@ -37,5 +37,5 @@ class ChangePasswordController extends Controller
                 'message'=> 'Contraseñas deben coincidir',
             ]);
         }
-    }
+    }*/
 }
