@@ -1,7 +1,6 @@
 <template>
     <v-app-bar app>
         <!-- <v-app-bar-nav-icon variant="text"></v-app-bar-nav-icon> -->
-
         <v-spacer></v-spacer>
 
         <span class="fw-bold">
