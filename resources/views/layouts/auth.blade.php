@@ -17,6 +17,9 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
+    <link rel="shortcut icon" type="image/png" href="{{ asset('/images/digitalStore.png') }}">
+    <link rel="shortcut icon" sizes="192x192" href="{{ asset('/images/digitalStore.png') }}">
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
