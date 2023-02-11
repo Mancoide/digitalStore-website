@@ -5,19 +5,42 @@
 				<h5>Cambiar Contraseña</h5>
 			</v-row>
 			<v-card class="p-0 m-0 col-lg-4 col-sm-12">
-                <form @submit.prevent="form.post('/Password')">
-                    <FormVue :roles="roles" :formData="form" />
+                <form @submit.prevent="form.put('/Password/'+user.id)">
                     <div class="row">
+                        <div class="form-group col-lg-8">
+                            <v-text-field
+                                :error-messages="form.errors.password"
+                                v-model="form.password"
+                                color="primary"
+                                type="password"
+                                label="Contraseña"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-8">
+                            <v-text-field
+                                :error-messages="form.errors.ConfirmPassword"
+                                v-model="form.ConfirmPassword"
+                                color="primary"
+                                type="password"
+                                label="Confirmar Contraseña"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+                    <!-- </div>
+                    <div class="card-footer"> -->
                         <div class="row">
                             <div class="col-4">
-                                <v-btn
+                                <!-- <v-btn
                                     type="submit"
                                     rounded="lg"
                                     color="success"
                                     class="w-100"
                                 >
                                     Guardar
-                                </v-btn>
+                                </v-btn> -->
                             </div>
                             <div class="col-4">
                                 <Link href="/" as="button" class="w-100">
@@ -29,6 +52,7 @@
                                             Cancelar
                                     </v-btn>
                                 </Link>
+
                             </div>
                         </div>
                     </div>
@@ -39,19 +63,18 @@
 </template>
 
 <script>
-    import FormVue from './Form.vue';
-    import { Inertia, Link, useForm } from '@inertiajs/inertia-vue3';
+    import { Link, useForm } from '@inertiajs/inertia-vue3';
 
     export default {
         components: {
-            FormVue,
             Link
         },
         props: {
             user: Object
         },
-        setup () {
+        setup (props) {
             const form = useForm({
+                id: props.user.id,
                 password: null,
                 ConfirmPassword: null
             });
