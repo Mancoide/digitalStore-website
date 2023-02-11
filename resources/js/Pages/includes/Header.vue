@@ -22,7 +22,8 @@
                 <v-list dense>
                     <v-list-item-group v-model="selectedItem" color="primary" >
                         <v-list-item>
-                            <v-btn color="black" dark href="/password">
+                            <v-btn color="black" dark href="/#">
+                            <!-- <v-btn color="black" dark href="/password"> -->
                                 <v-icon>mdi-key-change</v-icon>
                                 <span color="white">Contraseña</span>
                             </v-btn>
