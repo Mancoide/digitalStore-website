@@ -20,12 +20,12 @@
             <v-card class="mx-auto" max-width="300" tile>
                 <v-list dense>
                     <v-list-item-group v-model="selectedItem" color="primary" >
-                        <v-list-item>
+                       <!--  <v-list-item>
                             <v-btn color="white" dark href="/#">
                                 <v-icon>mdi-key-change</v-icon>
                                 <span color="black">Contraseña</span>
                             </v-btn>
-                        </v-list-item>
+                        </v-list-item> -->
                         <v-list-item>
                             <v-btn class="w-100 justify-content-start" color="white" dark href="/logout">
                                 <v-icon>mdi-logout-variant</v-icon> &nbsp;
