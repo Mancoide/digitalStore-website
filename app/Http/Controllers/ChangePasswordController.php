@@ -12,27 +12,30 @@ class ChangePasswordController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Password/Index');
+        $user = User::find(auth()->user()->id);
+        return Inertia::render('Password/Change',compact('user'));
     }
 
-    public function store(ChangePasswordRequest $request)
+    public function update(User $user, ChangePasswordRequest $request)
     {
-        if($request->password == $request->ConfirmPassword){
-            User::where('id', auth()->user->id)->first()->update([
+        /*if($request->password == $request->ConfirmPassword){
+            //$users = User::find(auth()->user()->id);
+
+            $user->update([
                 'password' => $request->password
             ]);
 
-            auth()->logout();
+            //auth()->logout();
 
-            return Redirect::route('login')->with('notification', [
+            return Redirect::route('/')->with('notification', [
                 'status' => 'success',
                 'message'=> 'Cambiado Exitosamente',
             ]);
         } else {
-            return Redirect::route('Password/Change')->with('notification', [
+            return Redirect::route('/')->with('notification', [
                 'status' => 'error',
                 'message'=> 'Contraseñas deben coincidir',
             ]);
-        }
+        }*/
     }
 }

@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/buy', [\App\Http\Controllers\HomeController::class, 'buyAccounts'])->name('home.buy');
 
 	Route::resource('users', \App\Http\Controllers\UserController::class);
+	Route::resource('password', \App\Http\Controllers\ChangePasswordController::class);
 	Route::resource('creditTransactions', \App\Http\Controllers\CreditTransactionController::class);
 	Route::resource('clients', \App\Http\Controllers\ClientController::class);
 	Route::resource('roles', \App\Http\Controllers\RoleController::class);

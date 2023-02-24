@@ -15,6 +15,7 @@
 								<td>Producto</td>
 								<td>Cuenta</td>
 								<td>Contraseña</td>
+                                <td>Decripción</td>
 								<td>Estado</td>
 							</tr>
 						</thead>
@@ -36,6 +37,7 @@
 								<td>{{ account.product.name }}</td>
 								<td>{{ account.email }}</td>
 								<td>{{ account.password }}</td>
+                                <td>{{ account.description }}</td>
 								<td class="text-center text-white">
 									<v-badge
 										:color="account.status.badge"

@@ -25,6 +25,7 @@ class ChangePasswordRequest extends FormRequest
     {
         return [
             'password' => 'required|min:5|confirmed',
+            'ConfirmPassword' => 'required|min:5|confirmed',
         ];
     }
 }

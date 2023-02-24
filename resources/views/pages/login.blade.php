@@ -9,6 +9,9 @@
               		<div class="card-body p-lg-5">
                 		{{ Form::open(['route' => 'login.post']) }}
                             @include('partials.mesage')
+                            <div class="mb-3">
+                                <v-img src="/assets/images/digitalStore.png" />
+                            </div>
                   			<div class="form-floating mb-3">
                     			<input class="form-control" id="floatingInput" type="text" placeholder="Example.com" name="username">
                     			<label for="floatingInput">Usuario</label>
