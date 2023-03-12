@@ -17,7 +17,7 @@ class PurchaseController extends Controller
     {
         $myAccounts = Account::with('product', 'product.media', 'status')
             ->where('seller_id', auth()->user()->id)
-            ->orderBy('id', 'ASC')
+            ->orderBy('subscription_date', 'ASC')
             ->paginate(20);
             //->paginate(20);
 

@@ -42,7 +42,7 @@
 								<td>{{ account.email }}</td>
 								<td>{{ account.password }}</td>
                                 <td>{{ account.description }}</td>
-                                <td>{{ formatDate(account.created_at) }}</td>
+                                <td>{{ formatDate(account.subscription_date) }}</td>
 								<td class="text-center text-white">
 									<v-badge
 										:color="account.status.badge"
