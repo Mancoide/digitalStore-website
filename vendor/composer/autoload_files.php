@@ -35,5 +35,5 @@ return array(
     '98caa11a197f6516a8e48aa4abb5ccc6' => $vendorDir . '/inertiajs/inertia-laravel/helpers.php',
     'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
     '320163ac6b93aebe3dc25b60a0533d56' => $vendorDir . '/spatie/laravel-ignition/src/helpers.php',
-    '7cd801ec71244440c750e32c83ec7798' => $baseDir . '/app/Http/Helpers.php',
+    'b8bc7e9abae9eed2920bd7b1e8550edb' => $baseDir . '/app/Http/helpers.php',
 );

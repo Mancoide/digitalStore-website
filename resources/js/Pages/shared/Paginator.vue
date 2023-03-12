@@ -8,7 +8,7 @@
 		></v-pagination>
 	</div>
 </template>
-  
+
 <script>
   	import { Inertia } from '@inertiajs/inertia';
 	import { Link } from '@inertiajs/inertia-vue3'
@@ -21,7 +21,7 @@
 			links: Array,
 		},
 		data () {
-			let uri = window.location.search.substring(1); 
+			let uri = window.location.search.substring(1);
     		let urlParams = new URLSearchParams(uri).get('page');
 
 			return {
@@ -30,9 +30,8 @@
 		},
 		methods: {
 			reloadPage(page){
-				Inertia.visit('/users?page='+page)
+				Inertia.visit('?page='+page)
 			}
-		},
-		
+		}
   	}
 </script>

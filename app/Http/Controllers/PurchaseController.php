@@ -17,7 +17,9 @@ class PurchaseController extends Controller
     {
         $myAccounts = Account::with('product', 'product.media', 'status')
             ->where('seller_id', auth()->user()->id)
+            ->orderBy('id', 'ASC')
             ->paginate(20);
+            //->paginate(20);
 
         return Inertia::render('Purchases/Index', compact('myAccounts'));
     }

@@ -1,3 +1,6 @@
+<script setup>
+    import { formatDate } from '../../helper.js';
+</script>
 <template>
 	<v-container>
 		<v-responsive aspect-ratio="16 / 9" class="pa-4">
@@ -16,6 +19,7 @@
 								<td>Cuenta</td>
 								<td>Contraseña</td>
                                 <td>Decripción</td>
+                                <td>Fecha</td>
 								<td>Estado</td>
 							</tr>
 						</thead>
@@ -38,6 +42,7 @@
 								<td>{{ account.email }}</td>
 								<td>{{ account.password }}</td>
                                 <td>{{ account.description }}</td>
+                                <td>{{ formatDate(account.created_at) }}</td>
 								<td class="text-center text-white">
 									<v-badge
 										:color="account.status.badge"
@@ -48,6 +53,7 @@
 						</tbody>
 					</v-table>
 					<pagination :links="myAccounts.links" />
+					<!-- <Pagination :data="myAccounts" /> -->
 				</v-card-text>
 			</v-card>
 		</v-responsive>
@@ -55,12 +61,12 @@
 </template>
 
 <script>
-	import Pagination from '../shared/Paginator.vue'
+	import Pagination from '../shared/Paginator.vue';
 	import { Link } from '@inertiajs/inertia-vue3';
 	import TableActionsVue from '../shared/TableActions.vue';
 
 	export default {
-		data() {
+		/*data() {
 			let items = [
 				// {name: 'Editar', icon:'mdi-pencil-outline', navigateTo:"categories/:id/edit"}
 			];
@@ -68,7 +74,7 @@
 			return {
 				items
 			}
-		},
+		},*/
 		components: {
 			Pagination,
 			TableActionsVue,
