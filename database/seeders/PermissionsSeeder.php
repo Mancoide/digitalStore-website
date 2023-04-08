@@ -238,6 +238,14 @@ class PermissionsSeeder extends Seeder
                     'created_at'   => date('Y-m-d H:i:s'),
                     'updated_at'   => date('Y-m-d H:i:s'),
                 ],
+
+                [
+                    'name' => 'users.loginWith',
+                    'display_name' => 'Logearse con usuarios',
+                    'description' => 1,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ],
             ]);
 
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');

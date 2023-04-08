@@ -26,6 +26,14 @@
                                 <span color="black">Contraseña</span>
                             </v-btn>
                         </v-list-item>
+
+                        <v-list-item v-if="mainMenu.AUTENTICACION && mainMenu.AUTENTICACION['users.loginWith']">
+                            <v-btn color="white" dark href="/users/login-with">
+                                <v-icon>mdi-key-arrow-right</v-icon> &nbsp;
+                                <span color="black">Login Como</span>
+                            </v-btn>
+                        </v-list-item>
+
                         <v-list-item>
                             <v-btn class="w-100 justify-content-start" color="white" dark href="/logout">
                                 <v-icon>mdi-logout-variant</v-icon> &nbsp;
@@ -45,6 +53,31 @@ import { CIcon } from '@coreui/icons-vue';
 import { cilUser } from '@coreui/icons';
 
 export default {
+    data() {
+        let mainMenu = {}
+        let authenticationArray = [
+            'users.loginWith',
+        ]
+
+        this.$page?.props?.authUserPermissions.forEach(item => {
+            // AUTENTICACION
+            if(authenticationArray.includes(item.name))
+            {
+                mainMenu = {
+                    ...mainMenu,
+                    'AUTENTICACION': {
+                        ...mainMenu.AUTENTICACION,
+                        [item.name]: true
+                    }
+                }
+            }
+        })
+
+        return {
+            mainMenu
+        }
+    },
+
     components:{
         CIcon,
     },

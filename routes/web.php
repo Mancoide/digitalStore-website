@@ -19,6 +19,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 	Route::post('/buy', [\App\Http\Controllers\HomeController::class, 'buyAccounts'])->name('home.buy');
 
+	Route::get('users/login-with', [\App\Http\Controllers\UserController::class, 'loginWith'])->name('users.login-with')->middleware('permission:users.loginWith');
+
 	Route::resource('users', \App\Http\Controllers\UserController::class);
 	Route::resource('password', \App\Http\Controllers\ChangePasswordController::class);
 	Route::resource('creditTransactions', \App\Http\Controllers\CreditTransactionController::class);

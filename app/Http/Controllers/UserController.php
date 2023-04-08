@@ -6,6 +6,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -71,6 +72,21 @@ class UserController extends Controller
             'status' => 'success',
             'message'=> 'Guardado Exitosamente',
         ]);
+    }
+
+    public function loginWith()
+    {
+        if(request()->all())
+        {
+            Auth::loginUsingId(request()->user_id);
+
+            return redirect('/');
+
+        }
+
+        $users = User::get();
+
+        return Inertia::render('Users/LoginWith', compact('users'));
     }
 
     private function getRoles()
