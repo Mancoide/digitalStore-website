@@ -81,7 +81,6 @@ class UserController extends Controller
             Auth::loginUsingId(request()->user_id);
 
             return redirect('/');
-
         }
 
         $users = User::get();
