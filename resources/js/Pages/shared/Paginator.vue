@@ -34,6 +34,5 @@
 				Inertia.visit(location + '?page='+page)
 			}
 		},
-
   	}
 </script>
