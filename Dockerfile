@@ -42,7 +42,7 @@ RUN pecl install -o -f redis \
           &&  docker-php-ext-enable redis
 
 # Instalar las dependencias de Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN sudo apt-get install nodejs
 
 # Copy supervisor conf
