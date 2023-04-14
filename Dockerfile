@@ -66,8 +66,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 #    chown -R $user:$user /usr/local/bin/start && \
 #    chmod u+x /usr/local/bin/start
 
-RUN usermod -u $uid www-data
-RUN groupmod -g $gid www-data
+# RUN usermod -u $uid www-data
+# RUN groupmod -g $gid www-data
 
 RUN chown -R www-data:www-data /usr/local/bin/start && \
     chmod u+x /usr/local/bin/start
