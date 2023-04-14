@@ -1,8 +1,9 @@
 FROM node:latest
 
-COPY package.json /var/www/digitalStore-website
 
 WORKDIR /var/www/digitalStore-website
+
+COPY package.json /var/www/digitalStore-website
 
 RUN yarn install
 
