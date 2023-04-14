@@ -1,6 +1,7 @@
 FROM node:latest
 
-RUN npm install -g yarn
 WORKDIR /var/www/digitalStore-website
+
+RUN yarn install
 
 RUN yarn build --production
