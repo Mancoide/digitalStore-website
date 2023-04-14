@@ -7,4 +7,4 @@ COPY package.json /var/www/digitalStore-website
 
 RUN yarn install
 
-RUN yarn build --production
+RUN yarn build
