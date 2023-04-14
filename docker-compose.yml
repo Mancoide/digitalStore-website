@@ -36,7 +36,7 @@ services:
       - 443:443
     volumes:
       - ./:/var/www/digitalStore-website
-    #   - nginx_secrets:/etc/letsencrypt
+      - nginx_secrets:/etc/letsencrypt
       - ./nginx-resources:/etc/nginx/resources
       - ./user_conf.d:/etc/nginx/user_conf.d
     networks:
