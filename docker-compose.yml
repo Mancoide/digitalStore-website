@@ -23,13 +23,6 @@ services:
       CONTAINER_ROLE: "${CONTAINER_ROLE}"
       APP_ENV: "${APP_ENV}"
       DOCKER_USER: "${DOCKER_USER}"
-  node:
-    build:
-      context: ./
-      dockerfile: Dockerfile_node
-    working_dir: /var/www/digitalStore-website
-    depends_on:
-      - app
   nginx:
     image: jonasal/nginx-certbot:latest
     container_name: nginx-certbot
