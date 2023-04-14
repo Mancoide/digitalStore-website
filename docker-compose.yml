@@ -36,7 +36,7 @@ services:
       - 443:443
     volumes:
       - ./:/var/www/digitalStore-website
-      - nginx_secrets:/etc/letsencrypt
+    #   - nginx_secrets:/etc/letsencrypt
       - ./nginx-resources:/etc/nginx/resources
       - ./user_conf.d:/etc/nginx/user_conf.d
     networks:
@@ -48,23 +48,3 @@ networks:
   digitalstore:
     driver: bridge
   server-nginx:
-
-#   nginx:
-#     image: nginx:alpine
-#     container_name: digitalstore-nginx
-#     hostname: digitalstore-nginx
-#     restart: unless-stopped
-#     ports:
-#       - "${DOCKER_HOST_PORT}:${DOCKER_CONTAINER_PORT}"
-#     volumes:
-#       - ./:/var/www
-#       - ./docker-compose/nginx/nginx.conf:/etc/nginx/nginx.conf
-#       - ./docker-compose/nginx/conf.d:/etc/nginx/conf.d
-#     networks:
-#       - digitalstore
-#       - nginx-certbot_server-nginx
-# networks:
-#   digitalstore:
-#     driver: bridge
-#   nginx-certbot_server-nginx:
-#     external: true
