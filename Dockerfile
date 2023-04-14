@@ -43,7 +43,7 @@ RUN pecl install -o -f redis \
 
 # Instalar las dependencias de Node.js
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
-RUN sudo apt-get install nodejs
+RUN apt-get install nodejs
 
 # Copy supervisor conf
 # COPY ./docker-compose/supervisor/horizon.conf /etc/supervisor/conf.d/horizon.conf
